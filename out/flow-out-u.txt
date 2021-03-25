@@ -1,0 +1,621 @@
+==> toroidal-grid/toroidal-grid-10.out <==
+toroidal-grid 50 100 20 15 0 32.4503 17 
+
+==> toroidal-grid/toroidal-grid-11.out <==
+toroidal-grid 50 100 25 10 0 0.926191 0 
+
+==> toroidal-grid/toroidal-grid-12.out <==
+toroidal-grid 50 100 30 10 0 3.5887 9 
+
+==> toroidal-grid/toroidal-grid-13.out <==
+toroidal-grid 50 100 35 10 0 18.3856 21 
+
+==> toroidal-grid/toroidal-grid-14.out <==
+toroidal-grid 50 100 40 10 0 36.9088 69 
+
+==> toroidal-grid/toroidal-grid-15.out <==
+toroidal-grid 50 100 45 10 0 190.365 1042 
+
+==> toroidal-grid/toroidal-grid-16.out <==
+toroidal-grid 60 120 5 60 0.05 7200.01 53718 
+
+==> toroidal-grid/toroidal-grid-17.out <==
+toroidal-grid 60 120 10 42 0.0714286 7200.01 18009 
+
+==> toroidal-grid/toroidal-grid-18.out <==
+toroidal-grid 60 120 15 28 0 511.73 578 
+
+==> toroidal-grid/toroidal-grid-19.out <==
+toroidal-grid 60 120 20 22 0 112.235 287 
+
+==> toroidal-grid/toroidal-grid-20.out <==
+toroidal-grid 60 120 25 18 0 82.2166 83 
+
+==> toroidal-grid/toroidal-grid-21.out <==
+toroidal-grid 60 120 30 12 0 2.93346 0 
+
+==> toroidal-grid/toroidal-grid-22.out <==
+toroidal-grid 60 120 35 12 0 13.4887 9 
+
+==> toroidal-grid/toroidal-grid-23.out <==
+toroidal-grid 60 120 40 12 0 35.3463 15 
+
+==> toroidal-grid/toroidal-grid-24.out <==
+toroidal-grid 60 120 45 12 0 150.294 93 
+
+==> toroidal-grid/toroidal-grid-25.out <==
+toroidal-grid 60 120 50 12 0 685.241 555 
+
+==> toroidal-grid/toroidal-grid-26.out <==
+toroidal-grid 60 120 55 10 0 1214.07 2252 
+
+==> toroidal-grid/toroidal-grid-27.out <==
+toroidal-grid 70 140 5 70 0.0571429 7200.02 41780 
+
+==> toroidal-grid/toroidal-grid-28.out <==
+toroidal-grid 70 140 10 49 0.0816327 7200.02 6492 
+
+==> toroidal-grid/toroidal-grid-29.out <==
+toroidal-grid 70 140 15 35 0 824.624 25 
+
+==> toroidal-grid/toroidal-grid-2.out <==
+toroidal-grid 40 80 15 14 0 4.66239 63 
+
+==> toroidal-grid/toroidal-grid-30.out <==
+toroidal-grid 70 140 20 32 0.125 7200.02 2175 
+
+==> toroidal-grid/toroidal-grid-31.out <==
+toroidal-grid 70 140 25 23 0 312.22 135 
+
+==> toroidal-grid/toroidal-grid-32.out <==
+toroidal-grid 70 140 30 21 0 660.525 181 
+
+==> toroidal-grid/toroidal-grid-33.out <==
+toroidal-grid 70 140 35 14 0 6.15028 0 
+
+==> toroidal-grid/toroidal-grid-34.out <==
+toroidal-grid 70 140 40 14 0 60.5961 11 
+
+==> toroidal-grid/toroidal-grid-35.out <==
+toroidal-grid 70 140 45 14 0 62.0289 13 
+
+==> toroidal-grid/toroidal-grid-36.out <==
+toroidal-grid 70 140 50 14 0 407.64 57 
+
+==> toroidal-grid/toroidal-grid-37.out <==
+toroidal-grid 70 140 55 14 0 1076.27 133 
+
+==> toroidal-grid/toroidal-grid-38.out <==
+toroidal-grid 70 140 60 14 0 5835.06 3275 
+
+==> toroidal-grid/toroidal-grid-39.out <==
+toroidal-grid 70 140 65 10 0 6265.83 1324 
+
+==> toroidal-grid/toroidal-grid-3.out <==
+toroidal-grid 40 80 20 8 0 0.35929 0 
+
+==> toroidal-grid/toroidal-grid-40.out <==
+toroidal-grid 80 160 5 80 0.0625 7200.02 15875 
+
+==> toroidal-grid/toroidal-grid-41.out <==
+toroidal-grid 80 160 10 56 0.0892857 7200.04 3670 
+
+==> toroidal-grid/toroidal-grid-42.out <==
+toroidal-grid 80 160 15 45 0.0888889 7200.02 1088 
+
+==> toroidal-grid/toroidal-grid-43.out <==
+toroidal-grid 80 160 20 36 0.0833333 7200.04 508 
+
+==> toroidal-grid/toroidal-grid-44.out <==
+toroidal-grid 80 160 25 32 0.125 7200.02 601 
+
+==> toroidal-grid/toroidal-grid-45.out <==
+toroidal-grid 80 160 30 26 0 4100.34 155 
+
+==> toroidal-grid/toroidal-grid-46.out <==
+toroidal-grid 80 160 35 24 0.0833333 7200.02 1979 
+
+==> toroidal-grid/toroidal-grid-47.out <==
+toroidal-grid 80 160 40 16 0 10.981 0 
+
+==> toroidal-grid/toroidal-grid-48.out <==
+toroidal-grid 80 160 45 16 0 263.111 9 
+
+==> toroidal-grid/toroidal-grid-49.out <==
+toroidal-grid 80 160 50 16 0 579.973 17 
+
+==> toroidal-grid/toroidal-grid-4.out <==
+toroidal-grid 40 80 25 8 0 1.3561 9 
+
+==> toroidal-grid/toroidal-grid-50.out <==
+toroidal-grid 80 160 55 16 0 1334.98 47 
+
+==> toroidal-grid/toroidal-grid-51.out <==
+toroidal-grid 80 160 60 16 0 6328.33 467 
+
+==> toroidal-grid/toroidal-grid-52.out <==
+toroidal-grid 80 160 65 16 0.4375 7200.02 611 
+
+==> toroidal-grid/toroidal-grid-53.out <==
+toroidal-grid 80 160 70 14 0.571429 7200.03 675 
+
+==> toroidal-grid/toroidal-grid-54.out <==
+toroidal-grid 80 160 75 10 0.6 7200.02 641 
+
+==> toroidal-grid/toroidal-grid-5.out <==
+toroidal-grid 40 80 30 8 0 3.78374 13 
+
+==> toroidal-grid/toroidal-grid-6.out <==
+toroidal-grid 40 80 35 8 0 15.5258 34 
+
+==> toroidal-grid/toroidal-grid-7.out <==
+toroidal-grid 50 100 5 50 0 2775.86 63955 
+
+==> toroidal-grid/toroidal-grid-8.out <==
+toroidal-grid 50 100 10 25 0 1.00912 0 
+
+==> toroidal-grid/toroidal-grid-9.out <==
+toroidal-grid 50 100 15 20 0 19.5208 25 
+==> planar-grid/planar-grid-0.out <==
+planar-grid 100 180 5 80 0.05 7200.03 27907 
+
+==> planar-grid/planar-grid-100.out <==
+planar-grid 90 161 30 16 0 790.058 227 
+
+==> planar-grid/planar-grid-101.out <==
+planar-grid 90 161 35 16 0 851.571 158 
+
+==> planar-grid/planar-grid-102.out <==
+planar-grid 90 161 40 15 0 2619.9 739 
+
+==> planar-grid/planar-grid-103.out <==
+planar-grid 90 161 45 9 0 2.57781 0 
+
+==> planar-grid/planar-grid-104.out <==
+planar-grid 90 161 50 9 0 35.6885 1 
+
+==> planar-grid/planar-grid-105.out <==
+planar-grid 90 161 55 9 0 14.7797 1 
+
+==> planar-grid/planar-grid-106.out <==
+planar-grid 90 161 60 9 0 99.3784 9 
+
+==> planar-grid/planar-grid-107.out <==
+planar-grid 90 161 65 9 0 721.296 19 
+
+==> planar-grid/planar-grid-108.out <==
+planar-grid 90 161 70 9 0 1052.1 63 
+
+==> planar-grid/planar-grid-109.out <==
+planar-grid 90 161 75 8 0 1299.92 65 
+
+==> planar-grid/planar-grid-10.out <==
+planar-grid 100 180 55 10 0 45.2017 1 
+
+==> planar-grid/planar-grid-110.out <==
+planar-grid 90 161 80 7 0 2397.65 93 
+
+==> planar-grid/planar-grid-111.out <==
+planar-grid 90 161 85 5 0 2699.48 248 
+
+==> planar-grid/planar-grid-11.out <==
+planar-grid 100 180 60 10 0 91.5021 3 
+
+==> planar-grid/planar-grid-12.out <==
+planar-grid 100 180 65 10 0 607.801 11 
+
+==> planar-grid/planar-grid-13.out <==
+planar-grid 100 180 70 10 0 2801.75 43 
+
+==> planar-grid/planar-grid-14.out <==
+planar-grid 100 180 75 10 0 3569.91 87 
+
+==> planar-grid/planar-grid-15.out <==
+planar-grid 100 180 80 9 0 5365.27 115 
+
+==> planar-grid/planar-grid-16.out <==
+planar-grid 100 180 85 8 0 4401.33 152 
+
+==> planar-grid/planar-grid-17.out <==
+planar-grid 100 180 90 8 0.625 7200.02 141 
+
+==> planar-grid/planar-grid-18.out <==
+planar-grid 100 180 95 5 0 6234.66 79 
+
+==> planar-grid/planar-grid-19.out <==
+planar-grid 110 199 5 89 0.0561798 7200.01 16856 
+
+==> planar-grid/planar-grid-1.out <==
+planar-grid 100 180 10 50 0.06 7200.02 7686 
+
+==> planar-grid/planar-grid-20.out <==
+planar-grid 110 199 10 55 0.0727273 7200.02 4346 
+
+==> planar-grid/planar-grid-21.out <==
+planar-grid 110 199 15 40 0.025 7200.06 2490 
+
+==> planar-grid/planar-grid-22.out <==
+planar-grid 110 199 20 31 0 982.516 52 
+
+==> planar-grid/planar-grid-23.out <==
+planar-grid 110 199 25 27 0 5747.91 1247 
+
+==> planar-grid/planar-grid-24.out <==
+planar-grid 110 199 30 21 0 203.594 1 
+
+==> planar-grid/planar-grid-25.out <==
+planar-grid 110 199 35 21 0.0952381 7200.02 225 
+
+==> planar-grid/planar-grid-26.out <==
+planar-grid 110 199 40 17 0 749.016 11 
+
+==> planar-grid/planar-grid-27.out <==
+planar-grid 110 199 45 17 0.117647 7200.02 275 
+
+==> planar-grid/planar-grid-28.out <==
+planar-grid 110 199 50 16 0.1875 7200.03 152 
+
+==> planar-grid/planar-grid-29.out <==
+planar-grid 110 199 55 11 0 43.6611 1 
+
+==> planar-grid/planar-grid-2.out <==
+planar-grid 100 180 15 35 0 1139.75 265 
+
+==> planar-grid/planar-grid-30.out <==
+planar-grid 110 199 60 10 0 39.6338 0 
+
+==> planar-grid/planar-grid-31.out <==
+planar-grid 110 199 65 10 0 35.5093 1 
+
+==> planar-grid/planar-grid-32.out <==
+planar-grid 110 199 70 10 0 893.78 13 
+
+==> planar-grid/planar-grid-33.out <==
+planar-grid 110 199 75 10 0 2636.08 25 
+
+==> planar-grid/planar-grid-34.out <==
+planar-grid 110 199 80 10 0.1 7200.02 36 
+
+==> planar-grid/planar-grid-35.out <==
+planar-grid 110 199 85 10 0.3 7200.02 103 
+
+==> planar-grid/planar-grid-36.out <==
+planar-grid 110 199 90 9 0.222222 7200.03 61 
+
+==> planar-grid/planar-grid-37.out <==
+planar-grid 110 199 95 9 0.555556 7200.05 109 
+
+==> planar-grid/planar-grid-38.out <==
+planar-grid 110 199 100 7 0.571429 7200.02 56 
+
+==> planar-grid/planar-grid-39.out <==
+planar-grid 110 199 105 5 0.6 7200.06 19 
+
+==> planar-grid/planar-grid-3.out <==
+planar-grid 100 180 20 28 0 912.986 215 
+
+==> planar-grid/planar-grid-40.out <==
+planar-grid 40 66 5 26 0 4.49937 207 
+
+==> planar-grid/planar-grid-41.out <==
+planar-grid 40 66 10 14 0 2.14944 7 
+
+==> planar-grid/planar-grid-42.out <==
+planar-grid 40 66 15 9 0 1.24873 1 
+
+==> planar-grid/planar-grid-43.out <==
+planar-grid 40 66 20 4 0 0.13 0 
+
+==> planar-grid/planar-grid-44.out <==
+planar-grid 40 66 25 4 0 0.348279 1 
+
+==> planar-grid/planar-grid-45.out <==
+planar-grid 40 66 30 4 0 0.438701 1 
+
+==> planar-grid/planar-grid-46.out <==
+planar-grid 40 66 35 4 0 1.06666 1 
+
+==> planar-grid/planar-grid-47.out <==
+planar-grid 50 85 5 35 0 28.3584 1804 
+
+==> planar-grid/planar-grid-48.out <==
+planar-grid 50 85 10 20 0 14.5662 323 
+
+==> planar-grid/planar-grid-49.out <==
+planar-grid 50 85 15 14 0 7.26362 33 
+
+==> planar-grid/planar-grid-4.out <==
+planar-grid 100 180 25 20 0 24.092 0 
+
+==> planar-grid/planar-grid-50.out <==
+planar-grid 50 85 20 10 0 3.02097 1 
+
+==> planar-grid/planar-grid-51.out <==
+planar-grid 50 85 25 5 0 0.230101 0 
+
+==> planar-grid/planar-grid-52.out <==
+planar-grid 50 85 30 5 0 0.959185 1 
+
+==> planar-grid/planar-grid-53.out <==
+planar-grid 50 85 35 5 0 0.868892 1 
+
+==> planar-grid/planar-grid-54.out <==
+planar-grid 50 85 40 5 0 4.29224 13 
+
+==> planar-grid/planar-grid-55.out <==
+planar-grid 50 85 45 5 0 13.2338 51 
+
+==> planar-grid/planar-grid-56.out <==
+planar-grid 60 104 5 44 0 472.507 15602 
+
+==> planar-grid/planar-grid-57.out <==
+planar-grid 60 104 10 26 0 95.7003 997 
+
+==> planar-grid/planar-grid-58.out <==
+planar-grid 60 104 15 16 0 3.57096 1 
+
+==> planar-grid/planar-grid-59.out <==
+planar-grid 60 104 20 14 0 29.4902 110 
+
+==> planar-grid/planar-grid-5.out <==
+planar-grid 100 180 30 20 0 1092.08 76 
+
+==> planar-grid/planar-grid-60.out <==
+planar-grid 60 104 25 12 0 35.4483 122 
+
+==> planar-grid/planar-grid-61.out <==
+planar-grid 60 104 30 6 0 0.346107 0 
+
+==> planar-grid/planar-grid-62.out <==
+planar-grid 60 104 35 6 0 1.12386 1 
+
+==> planar-grid/planar-grid-63.out <==
+planar-grid 60 104 40 6 0 1.29944 1 
+
+==> planar-grid/planar-grid-64.out <==
+planar-grid 60 104 45 6 0 6.00777 15 
+
+==> planar-grid/planar-grid-65.out <==
+planar-grid 60 104 50 6 0 37.5596 31 
+
+==> planar-grid/planar-grid-66.out <==
+planar-grid 60 104 55 5 0 54.1519 41 
+
+==> planar-grid/planar-grid-67.out <==
+planar-grid 70 123 5 53 0 3661.11 74636 
+
+==> planar-grid/planar-grid-68.out <==
+planar-grid 70 123 10 32 0 654.994 6521 
+
+==> planar-grid/planar-grid-69.out <==
+planar-grid 70 123 15 22 0 86.8223 134 
+
+==> planar-grid/planar-grid-6.out <==
+planar-grid 100 180 35 17 0 437.706 17 
+
+==> planar-grid/planar-grid-70.out <==
+planar-grid 70 123 20 17 0 18.6395 1 
+
+==> planar-grid/planar-grid-71.out <==
+planar-grid 70 123 25 14 0 19.3678 1 
+
+==> planar-grid/planar-grid-72.out <==
+planar-grid 70 123 30 13 0 194.629 321 
+
+==> planar-grid/planar-grid-73.out <==
+planar-grid 70 123 35 7 0 0.634468 0 
+
+==> planar-grid/planar-grid-74.out <==
+planar-grid 70 123 40 7 0 1.28509 1 
+
+==> planar-grid/planar-grid-75.out <==
+planar-grid 70 123 45 7 0 2.67004 1 
+
+==> planar-grid/planar-grid-76.out <==
+planar-grid 70 123 50 7 0 12.6944 7 
+
+==> planar-grid/planar-grid-77.out <==
+planar-grid 70 123 55 7 0 128.734 33 
+
+==> planar-grid/planar-grid-78.out <==
+planar-grid 70 123 60 7 0 241.248 127 
+
+==> planar-grid/planar-grid-79.out <==
+planar-grid 70 123 65 5 0 294.706 91 
+
+==> planar-grid/planar-grid-7.out <==
+planar-grid 100 180 40 16 0 1407.4 105 
+
+==> planar-grid/planar-grid-80.out <==
+planar-grid 80 142 5 62 0.0483871 7200.02 54783 
+
+==> planar-grid/planar-grid-81.out <==
+planar-grid 80 142 10 38 0 7004.86 27058 
+
+==> planar-grid/planar-grid-82.out <==
+planar-grid 80 142 15 27 0 430.193 606 
+
+==> planar-grid/planar-grid-83.out <==
+planar-grid 80 142 20 18 0 3.47751 0 
+
+==> planar-grid/planar-grid-84.out <==
+planar-grid 80 142 25 18 0 318.725 161 
+
+==> planar-grid/planar-grid-85.out <==
+planar-grid 80 142 30 15 0 166.823 35 
+
+==> planar-grid/planar-grid-86.out <==
+planar-grid 80 142 35 14 0 736.816 452 
+
+==> planar-grid/planar-grid-87.out <==
+planar-grid 80 142 40 8 0 1.34235 0 
+
+==> planar-grid/planar-grid-88.out <==
+planar-grid 80 142 45 8 0 11.4491 1 
+
+==> planar-grid/planar-grid-89.out <==
+planar-grid 80 142 50 8 0 14.1112 1 
+
+==> planar-grid/planar-grid-8.out <==
+planar-grid 100 180 45 16 0.1875 7200.03 745 
+
+==> planar-grid/planar-grid-90.out <==
+planar-grid 80 142 55 8 0 40.1296 11 
+
+==> planar-grid/planar-grid-91.out <==
+planar-grid 80 142 60 8 0 354.846 25 
+
+==> planar-grid/planar-grid-92.out <==
+planar-grid 80 142 65 8 0 449.031 63 
+
+==> planar-grid/planar-grid-93.out <==
+planar-grid 80 142 70 7 0 871.379 102 
+
+==> planar-grid/planar-grid-94.out <==
+planar-grid 80 142 75 5 0 798.448 53 
+
+==> planar-grid/planar-grid-95.out <==
+planar-grid 90 161 5 71 0.0422535 7200.05 35811 
+
+==> planar-grid/planar-grid-96.out <==
+planar-grid 90 161 10 43 0.0232558 7200.02 12100 
+
+==> planar-grid/planar-grid-97.out <==
+planar-grid 90 161 15 29 0 118.719 15 
+
+==> planar-grid/planar-grid-98.out <==
+planar-grid 90 161 20 24 0 203.169 43 
+
+==> planar-grid/planar-grid-99.out <==
+planar-grid 90 161 25 19 0 33.5063 1 
+
+==> planar-grid/planar-grid-9.out <==
+planar-grid 100 180 50 10 0 33.6826 0 
+==> series-parallel/series-parallel-0.out <==
+series-parallel 28 40 5 15 0 0.186444 1 
+
+==> series-parallel/series-parallel-10.out <==
+series-parallel 35 50 5 17 0 0.295008 1 
+
+==> series-parallel/series-parallel-11.out <==
+series-parallel 35 50 10 9 0 0.493363 1 
+
+==> series-parallel/series-parallel-12.out <==
+series-parallel 35 50 15 5 0 0.256258 1 
+
+==> series-parallel/series-parallel-13.out <==
+series-parallel 35 50 20 4 0 0.42821 1 
+
+==> series-parallel/series-parallel-14.out <==
+series-parallel 35 50 25 2 0 0.142467 1 
+
+==> series-parallel/series-parallel-15.out <==
+series-parallel 35 50 30 2 0 0.149542 1 
+
+==> series-parallel/series-parallel-16.out <==
+series-parallel 44 60 5 19 0 0.553095 1 
+
+==> series-parallel/series-parallel-17.out <==
+series-parallel 44 60 10 11 0 0.44835 1 
+
+==> series-parallel/series-parallel-18.out <==
+series-parallel 44 60 15 8 0 0.816301 1 
+
+==> series-parallel/series-parallel-19.out <==
+series-parallel 44 60 20 6 0 0.84002 1 
+
+==> series-parallel/series-parallel-1.out <==
+series-parallel 28 40 10 8 0 0.20532 1 
+
+==> series-parallel/series-parallel-20.out <==
+series-parallel 44 60 25 4 0 0.352112 1 
+
+==> series-parallel/series-parallel-21.out <==
+series-parallel 44 60 30 4 0 0.367272 1 
+
+==> series-parallel/series-parallel-22.out <==
+series-parallel 44 60 35 3 0 0.398644 1 
+
+==> series-parallel/series-parallel-23.out <==
+series-parallel 44 60 40 3 0 0.830259 1 
+
+==> series-parallel/series-parallel-24.out <==
+series-parallel 46 65 5 21 0 0.455966 1 
+
+==> series-parallel/series-parallel-25.out <==
+series-parallel 46 65 10 11 0 1.66973 49 
+
+==> series-parallel/series-parallel-26.out <==
+series-parallel 46 65 15 6 0 0.555095 1 
+
+==> series-parallel/series-parallel-27.out <==
+series-parallel 46 65 20 5 0 0.321926 1 
+
+==> series-parallel/series-parallel-28.out <==
+series-parallel 46 65 25 4 0 1.64347 21 
+
+==> series-parallel/series-parallel-29.out <==
+series-parallel 46 65 30 2 0 0.360896 1 
+
+==> series-parallel/series-parallel-2.out <==
+series-parallel 28 40 15 5 0 0.0886559 1 
+
+==> series-parallel/series-parallel-30.out <==
+series-parallel 46 65 35 2 0 0.310451 1 
+
+==> series-parallel/series-parallel-31.out <==
+series-parallel 46 65 40 2 0 0.636771 1 
+
+==> series-parallel/series-parallel-32.out <==
+series-parallel 46 65 45 2 0 0.636544 1 
+
+==> series-parallel/series-parallel-33.out <==
+series-parallel 51 75 5 28 0 0.779424 1 
+
+==> series-parallel/series-parallel-34.out <==
+series-parallel 51 75 10 17 0 1.09456 1 
+
+==> series-parallel/series-parallel-35.out <==
+series-parallel 51 75 15 11 0 0.495755 1 
+
+==> series-parallel/series-parallel-36.out <==
+series-parallel 51 75 20 8 0 1.16409 1 
+
+==> series-parallel/series-parallel-37.out <==
+series-parallel 51 75 25 5 0 0.814684 1 
+
+==> series-parallel/series-parallel-38.out <==
+series-parallel 51 75 30 3 0 0.354538 1 
+
+==> series-parallel/series-parallel-39.out <==
+series-parallel 51 75 35 3 0 0.35099 1 
+
+==> series-parallel/series-parallel-3.out <==
+series-parallel 28 40 20 4 0 0.225871 1 
+
+==> series-parallel/series-parallel-40.out <==
+series-parallel 51 75 40 3 0 0.517401 1 
+
+==> series-parallel/series-parallel-41.out <==
+series-parallel 51 75 45 3 0 0.431228 1 
+
+==> series-parallel/series-parallel-42.out <==
+series-parallel 51 75 50 2 0 1.06239 1 
+
+==> series-parallel/series-parallel-4.out <==
+series-parallel 28 40 25 2 0 0.098567 1 
+
+==> series-parallel/series-parallel-5.out <==
+series-parallel 30 45 5 20 0 0.100254 1 
+
+==> series-parallel/series-parallel-6.out <==
+series-parallel 30 45 10 14 0 0.186378 1 
+
+==> series-parallel/series-parallel-7.out <==
+series-parallel 30 45 15 10 0 0.212155 1 
+
+==> series-parallel/series-parallel-8.out <==
+series-parallel 30 45 20 6 0 0.106058 0 
+
+==> series-parallel/series-parallel-9.out <==
+series-parallel 30 45 25 3 0 0.181163 1 

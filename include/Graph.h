@@ -32,6 +32,7 @@ public:
       vector<int> EdgeTo;     /**< Vector that contains the adjacency list of each
                          * Vertex. The lists are appended one after the other */
       vector<int> EdgesBegin; /**< The position of the first neighbor of each vertex */
+      vector<int> EdgeCost;    /**< Cost of the edge; 1 if instance is unweighted */
       vector<int> Degree;     /**< The degree of each vertex */
       vector<int> Weight;     /**<  The weight of each vertex */
       /**

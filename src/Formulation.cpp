@@ -29,7 +29,7 @@ void triangle(const Graph &G)
         std::cout << "yvars.." << std::endl;
         for(int m = 0; m < 2 * G.m; ++m)
         {
-            y[m].set(GRB_DoubleAttr_Obj, 1.0); // TODO: Make it work for general costs~[1, 1000]
+            y[m].set(GRB_DoubleAttr_Obj, G.EdgeCost[m]); // TODO: Make it work for general costs~[1, 1000]
         }
 
         for (int i = 0; i < G.n; i++){
