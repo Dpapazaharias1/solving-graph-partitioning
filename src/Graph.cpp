@@ -68,7 +68,7 @@ Graph::Graph(
 
 		std::cout << "n, r: " << n << ", " << r << std::endl;
 
-		int total_weight = 0;
+		total_weight = n;
 		bool is_weighted = (strcmp(weighted, "-w") == 0);
 		if (is_weighted)
 		{

@@ -219,7 +219,7 @@ void flow(const Graph &G)
 }
 
 
-void path(Graph &G)
+void path(Graph &G, int p)
 {
 
     // --------- Initialize Model and Environment ---------
@@ -313,7 +313,7 @@ void path(Graph &G)
 
     model.set(GRB_IntParam_PreCrush, 1);        // User Cuts
     model.set(GRB_IntParam_LazyConstraints, 1); // Lazy Cuts
-    PathSeparation cb = PathSeparation(y, x, G, G.r);
+    PathSeparation cb = PathSeparation(env, y, x, G, G.r, p);
     model.setCallback(&cb);
 
     // -------- Optimize Model --------
@@ -336,6 +336,10 @@ void path(Graph &G)
     std::cout << cb.userCuts << " ";
     std::cout << cb.lazyTime << " ";
     std::cout << cb.userTime << " ";
+    // Tree cut information
+    std::cout << p << " ";
+    std::cout << cb.branch_tree_cuts << " ";
+    std::cout << cb.lp_tree_cuts << " ";
     // End line
     std::cout << std::endl;
 

@@ -49,7 +49,7 @@ void logResults(std::string filepath, std::vector<double> solution)
 int main(int argc, char *argv[])
 {
     std::cout << "Number of arguments: " << argc << std::endl;
-    if (argc == 5)
+    if (argc >= 5)
     {
         const char *filetype = argv[1];
         const char *filename = argv[2];
@@ -71,9 +71,14 @@ int main(int argc, char *argv[])
         if(strcmp(formulation, "-path") == 0)
         {
             std::cout << "Starting path formulation..." << std::endl;
-            path(G);
+            path(G, 0);
         }
-
+        if(strcmp(formulation, "-tree") == 0)
+        {
+            std::cout << "Starting path+tree formulation..." << std::endl;
+            int p = std::stoi(argv[5]);
+            path(G, p);
+        }
     }
     else
     {

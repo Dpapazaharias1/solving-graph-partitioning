@@ -28,6 +28,7 @@ public:
       int n;                  /**< Number of vertices in G */
       int m;                  /**< Number of edges in G*/
       int r;
+      int total_weight;
       std::string graphtype;
       vector<int> EdgeTo;     /**< Vector that contains the adjacency list of each
                          * Vertex. The lists are appended one after the other */
