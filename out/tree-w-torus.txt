@@ -1,0 +1,164 @@
+==> toroidal-grid/toroidal-grid-0.out <==
+toroidal-grid 40 80 2230 37 0 85.1369 27697 1292 547598 0.00794944 15.3541 100 14155 0 
+
+==> toroidal-grid/toroidal-grid-10.out <==
+toroidal-grid 50 100 8932 15 0 7.0711 262 3905 107621 0.0174152 0.746958 100 6761 0 
+
+==> toroidal-grid/toroidal-grid-11.out <==
+toroidal-grid 50 100 11165 12 0 10.7746 740 6580 208926 0.0247151 1.75676 100 15669 0 
+
+==> toroidal-grid/toroidal-grid-12.out <==
+toroidal-grid 50 100 13398 10 0 8.9656 145 4292 51262 0.0180769 0.391763 100 3608 0 
+
+==> toroidal-grid/toroidal-grid-13.out <==
+toroidal-grid 50 100 15631 10 0 136.288 13092 3973 3979641 0.0166651 35.4744 100 331819 0 
+
+==> toroidal-grid/toroidal-grid-14.out <==
+toroidal-grid 50 100 17864 10 0 3417.66 47207 8405 11459897 0.0313028 109.187 100 1212406 0 
+
+==> toroidal-grid/toroidal-grid-15.out <==
+toroidal-grid 50 100 20097 8 0.125 7200.16 87691 12381 19625142 0.048014 198.818 100 2411231 0 
+
+==> toroidal-grid/toroidal-grid-16.out <==
+toroidal-grid 60 120 2374 59 0.0677966 7202.52 867679 5648 27479024 0.0527766 1233.63 100 467181 0 
+
+==> toroidal-grid/toroidal-grid-17.out <==
+toroidal-grid 60 120 4749 39 0.0512821 7201.82 37093 12051 2532786 0.0706722 56.5833 100 57355 0 
+
+==> toroidal-grid/toroidal-grid-18.out <==
+toroidal-grid 60 120 7124 29 0 3724.15 8474 13033 1778419 0.0568991 19.8482 100 77146 0 
+
+==> toroidal-grid/toroidal-grid-19.out <==
+toroidal-grid 60 120 9499 22 0 267.259 4208 11168 1167259 0.0451513 11.0535 100 37966 0 
+
+==> toroidal-grid/toroidal-grid-1.out <==
+toroidal-grid 40 80 4460 20 0 5.43165 1004 1385 133868 0.00786854 1.0999 100 9668 0 
+
+==> toroidal-grid/toroidal-grid-20.out <==
+toroidal-grid 60 120 11874 18 0 185.881 2237 7508 1215327 0.0299452 9.40255 100 65211 0 
+
+==> toroidal-grid/toroidal-grid-21.out <==
+toroidal-grid 60 120 14249 14 0 199.016 2627 14887 1026999 0.0628814 9.89203 100 69370 0 
+
+==> toroidal-grid/toroidal-grid-22.out <==
+toroidal-grid 60 120 16624 12 0 68.1043 98 6618 72447 0.0284514 0.595846 100 4246 0 
+
+==> toroidal-grid/toroidal-grid-23.out <==
+toroidal-grid 60 120 18999 12 0 562.699 2910 7422 1023642 0.0259716 10.2724 100 84662 0 
+
+==> toroidal-grid/toroidal-grid-24.out <==
+toroidal-grid 60 120 21374 12 0.0833333 7204 54189 7564 23632279 0.0376521 202.693 100 1979069 0 
+
+==> toroidal-grid/toroidal-grid-25.out <==
+toroidal-grid 60 120 23749 12 0.333333 7201.65 32612 18709 14540861 0.0880356 154.072 100 1632523 0 
+
+==> toroidal-grid/toroidal-grid-26.out <==
+toroidal-grid 60 120 26124 8 0.375 7200.15 2924 23005 1077221 0.102228 15.3645 100 138575 0 
+
+==> toroidal-grid/toroidal-grid-27.out <==
+toroidal-grid 70 140 2410 70 0.114286 7200.25 236483 4515 6691291 0.0548758 510.378 100 94192 0 
+
+==> toroidal-grid/toroidal-grid-28.out <==
+toroidal-grid 70 140 4820 48 0.125 7200.01 25509 15024 3877554 0.0868974 72.6635 100 111103 0 
+
+==> toroidal-grid/toroidal-grid-29.out <==
+toroidal-grid 70 140 7231 38 0.131579 7200.24 8050 22993 3147211 0.110593 35.2921 100 113120 0 
+
+==> toroidal-grid/toroidal-grid-2.out <==
+toroidal-grid 40 80 6690 12 0 0.817854 30 1981 9690 0.010514 0.0643297 100 719 0 
+
+==> toroidal-grid/toroidal-grid-30.out <==
+toroidal-grid 70 140 9641 28 0 407.413 2798 16858 769339 0.0883587 8.71095 100 23892 0 
+
+==> toroidal-grid/toroidal-grid-31.out <==
+toroidal-grid 70 140 12052 21 0 57.6962 59 9620 84434 0.0429293 0.623301 100 3371 0 
+
+==> toroidal-grid/toroidal-grid-32.out <==
+toroidal-grid 70 140 14462 21 0 3520.27 15688 8888 7618646 0.0413412 65.591 100 487710 0 
+
+==> toroidal-grid/toroidal-grid-33.out <==
+toroidal-grid 70 140 16873 17 0 1456.32 3888 20471 1840099 0.0972334 18.3123 100 99528 0 
+
+==> toroidal-grid/toroidal-grid-34.out <==
+toroidal-grid 70 140 19283 14 0 238.695 107 8670 100797 0.0419405 0.976745 100 5235 0 
+
+==> toroidal-grid/toroidal-grid-35.out <==
+toroidal-grid 70 140 21693 14 0 4206.52 3301 19110 1792649 0.0778606 16.5398 100 108405 0 
+
+==> toroidal-grid/toroidal-grid-36.out <==
+toroidal-grid 70 140 24104 14 0.142857 7201.25 13954 14144 7849549 0.0729717 80.4874 100 664001 0 
+
+==> toroidal-grid/toroidal-grid-37.out <==
+toroidal-grid 70 140 26514 14 0.357143 7201.28 12922 19986 8187417 0.0936245 88.935 100 752651 0 
+
+==> toroidal-grid/toroidal-grid-38.out <==
+toroidal-grid 70 140 28925 14 0.5 7200.28 2438 18338 1846640 0.0806256 20.682 100 147189 0 
+
+==> toroidal-grid/toroidal-grid-39.out <==
+toroidal-grid 70 140 31335 8 0.375 7201.31 7350 35164 3563546 0.152045 48.4214 100 436059 0 
+
+==> toroidal-grid/toroidal-grid-3.out <==
+toroidal-grid 40 80 8920 10 0 5.37574 763 4554 131706 0.0183397 1.16619 100 13516 0 
+
+==> toroidal-grid/toroidal-grid-40.out <==
+toroidal-grid 80 160 2417 78 0.102564 7202.8 355358 8805 11919239 0.0911584 1003.37 100 44088 0 
+
+==> toroidal-grid/toroidal-grid-41.out <==
+toroidal-grid 80 160 4835 55 0.127273 7201.63 89020 15114 14983057 0.0949221 308.171 100 182367 0 
+
+==> toroidal-grid/toroidal-grid-42.out <==
+toroidal-grid 80 160 7253 44 0.136364 7200.05 5400 32159 2518095 0.160509 30.711 100 84385 0 
+
+==> toroidal-grid/toroidal-grid-43.out <==
+toroidal-grid 80 160 9671 37 0.108108 7200.24 17538 17009 13126043 0.0789717 118.799 100 514788 0 
+
+==> toroidal-grid/toroidal-grid-44.out <==
+toroidal-grid 80 160 12088 32 0.125 7202.83 20500 19296 14838062 0.0768181 128.518 100 558610 0 
+
+==> toroidal-grid/toroidal-grid-45.out <==
+toroidal-grid 80 160 14506 24 0 379.113 232 10021 216260 0.04883 2.01218 100 9158 0 
+
+==> toroidal-grid/toroidal-grid-46.out <==
+toroidal-grid 80 160 16924 24 0.208333 7200.54 1484 49161 1335542 0.232622 13.3471 100 65123 0 
+
+==> toroidal-grid/toroidal-grid-47.out <==
+toroidal-grid 80 160 19342 18 0 4498.78 2726 37173 2525414 0.157081 24.4604 100 131060 0 
+
+==> toroidal-grid/toroidal-grid-48.out <==
+toroidal-grid 80 160 21759 16 0 1058.52 260 24635 230397 0.142149 2.16111 100 10866 0 
+
+==> toroidal-grid/toroidal-grid-49.out <==
+toroidal-grid 80 160 24177 16 0.125 7202.48 7851 24977 7191605 0.112048 57.6377 100 353875 0 
+
+==> toroidal-grid/toroidal-grid-4.out <==
+toroidal-grid 40 80 11150 8 0 1.73509 84 2647 17395 0.0124538 0.143008 100 1719 0 
+
+==> toroidal-grid/toroidal-grid-50.out <==
+toroidal-grid 80 160 26595 16 0.1875 7201.27 4785 19777 4193720 0.0896501 42.6154 100 282045 0 
+
+==> toroidal-grid/toroidal-grid-51.out <==
+toroidal-grid 80 160 29013 16 0.375 7200.4 2790 38223 2386781 0.194462 25.9975 100 180485 0 
+
+==> toroidal-grid/toroidal-grid-52.out <==
+toroidal-grid 80 160 31430 16 0.5 7200.02 1976 23876 2480145 0.103552 23.6073 100 143411 0 
+
+==> toroidal-grid/toroidal-grid-53.out <==
+toroidal-grid 80 160 33848 16 0.5625 7202.08 5798 25586 4744953 0.123034 56.296 100 421898 0 
+
+==> toroidal-grid/toroidal-grid-54.out <==
+toroidal-grid 80 160 36266 10 0.5 7200.94 3037 59719 2078626 0.294123 28.5403 100 220656 0 
+
+==> toroidal-grid/toroidal-grid-5.out <==
+toroidal-grid 40 80 13380 8 0 22.3386 3027 3176 592247 0.013993 5.19131 100 61865 0 
+
+==> toroidal-grid/toroidal-grid-6.out <==
+toroidal-grid 40 80 15610 8 0 547.39 87743 4206 13386979 0.0176943 127.17 100 1800509 0 
+
+==> toroidal-grid/toroidal-grid-7.out <==
+toroidal-grid 50 100 2233 49 0.0408163 7200.72 2.17874e+06 3044 52990212 0.0276737 1801.39 100 1267292 0 
+
+==> toroidal-grid/toroidal-grid-8.out <==
+toroidal-grid 50 100 4466 31 0 417.599 60366 5311 4495857 0.0297789 58.8561 100 138155 0 
+
+==> toroidal-grid/toroidal-grid-9.out <==
+toroidal-grid 50 100 6699 20 0 19.5061 1811 4137 600815 0.0175455 4.36545 100 40217 0 

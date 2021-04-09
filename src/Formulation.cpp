@@ -135,7 +135,7 @@ void flow(const Graph &G)
         std::cout << "yvars.." << std::endl;
         for(int m = 0; m < 2 * G.m; ++m)
         {
-            y[m].set(GRB_DoubleAttr_Obj, 1.0); // TODO: Make it work for general costs~[1, 1000]
+            y[m].set(GRB_DoubleAttr_Obj, G.EdgeCost[m]); // TODO: Make it work for general costs~[1, 1000]
             
         }
 
@@ -251,7 +251,7 @@ void path(Graph &G, int p)
             if (i < j)
             {
                 varName = varName = "x_" + std::to_string(i) + "," + std::to_string(j);
-                x[k] = model.addVar(0.0, 1.0, 1.0, GRB_BINARY, varName);
+                x[k] = model.addVar(0.0, 1.0, G.EdgeCost[k], GRB_BINARY, varName);
                 for (int l = G.EdgesBegin[j]; l < G.EdgesBegin[j] + G.Degree[j]; l++)
                 {
                     if (i == G.EdgeTo[l])
