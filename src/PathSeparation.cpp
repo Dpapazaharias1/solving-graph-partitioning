@@ -76,7 +76,7 @@ void PathSeparation::callback()
 
                 int j;
                 GRBLinExpr expr;
-                double *parent = new double[n];
+                int *parent = new int[n];
                 double *cost = new double[n];
 
                 for (int root = 0; root < n; root++)
@@ -114,7 +114,7 @@ void PathSeparation::callback()
                     }
                     // -------- Tree Generation --------
                     
-                    if(p > rand_int && G->total_weight == n) // Do not run for weighted instances
+                    if(false && p > rand_int && G->total_weight == n) // Do not run for weighted instances
                     {
                         std::vector< std::vector<int> > treeAdj(n, std::vector<int>());
                         std::vector<int> numChildren(n, 0);
@@ -131,7 +131,7 @@ void PathSeparation::callback()
 
                     // -------- Branch number --------
 
-                    if(p > rand_int)
+                    if(false && p > rand_int)
                     {
                         std::vector< std::vector<int> > tree_adj(n, std::vector<int>());
                         std::vector<int> tree_degree(n, 0);
@@ -153,27 +153,39 @@ void PathSeparation::callback()
                 
 
                 // -------- Prim's Fractional Separation Subroutine ---------
-                /*
-                std::vector<int> treeNodes;
-                srand((unsigned)time(0));
-                int s = rand() % n;
-                int treeWeight;
-                treeNodes = G->Prim(CostTo, s, r, parent, cost);
-                expr = 0;
-                for (int i : treeNodes)
+                if(p > rand_int)
                 {
-                    if (parent[i] != -1)
+                    std::vector<int> treeNodes;
+                    srand((unsigned)time(0));
+                    int s = rand() % n;
+                    double treeWeight = 0.0;
+                    int node_weight = 0;
+                    treeNodes = G->Prim(CostTo, s, r, parent, cost);
+                    
+                    expr = 0;
+                    for (int i : treeNodes)
                     {
-                        j = parent[i];
-                        treeWeight += xbar[j];
-                        expr += x[j];
+                        node_weight += G->Weight[i];
+                        if (parent[i] != -1)
+                        {
+                            //std::cout << "(" << i << ",";
+                            j = parent[i];
+                            treeWeight += xbar[j];
+                            expr += x[j];
+                            //std::cout << G->EdgeTo[j] << "), ";
+                        }
+                    }
+                    
+                    //std::cout << "Node weight : " << node_weight << ">" << r << std::endl;
+                    //std::cout << "sum x : " << treeWeight << std::endl;
+
+                    
+                    if (treeWeight < 1.0 && node_weight > r)
+                    {
+                        addCut(expr, GRB_GREATER_EQUAL, 1.0);
+                        userCuts++;
                     }
                 }
-                if (treeWeight < 1)
-                {
-                    addCut(expr, GRB_GREATER_EQUAL, 1);
-                }
-                */
                 // -------- Memory Dellocation --------
                 for (int i = 0; i < n; i++)
                 {
@@ -236,7 +248,7 @@ void PathSeparation::callback()
 
             int j;
             GRBLinExpr expr;
-            double *parent = new double[n];
+            int *parent = new int[n];
             double *cost = new double[n];
 
             for (int root = 0; root < n; root++)

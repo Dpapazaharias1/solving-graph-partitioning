@@ -24,8 +24,8 @@ CXX=g++
 # Linux Flags
 CXXFLAGS=-std=c++17 -O3 -Iinclude/ -I$(INCSPDLOG) -I$(INCGRB) $(CPPLIBGRB)
 
-main: main.o Graph.o Formulation.o MinHeap.o PathSeparation.o
-	$(CXX) $(CXXFLAGS) -o $(BINPATH)main main.o Graph.o Formulation.o MinHeap.o PathSeparation.o $(CPPLIBGRB)
+main: main.o Graph.o Formulation.o MinHeap.o PathSeparation.o TreeSeparation.o
+	$(CXX) $(CXXFLAGS) -o $(BINPATH)main main.o Graph.o Formulation.o MinHeap.o PathSeparation.o TreeSeparation.o $(CPPLIBGRB)
 main.o: 
 	$(CXX) $(CXXFLAGS) -c $(SRCPATH)main.cpp 
 Graph.o:
@@ -36,6 +36,7 @@ MinHeap.o:
 	$(CXX) $(CXXFLAGS) -c $(SRCPATH)MinHeap.cpp
 PathSeparation.o:
 	$(CXX) $(CXXFLAGS) -c $(SRCPATH)PathSeparation.cpp
-
+TreeSeparation.o:
+	$(CXX) $(CXXFLAGS) -c $(SRCPATH)TreeSeparation.cpp
 clean:
 	rm -rf *.o ./bin/main

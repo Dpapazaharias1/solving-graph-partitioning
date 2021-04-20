@@ -1,5 +1,6 @@
 #include "Graph.h"
 #include "PathSeparation.h"
+#include "TreeSeparation.h"
 #include "gurobi_c++.h"
 
 void triangle(const Graph &G)
@@ -108,7 +109,7 @@ void triangle(const Graph &G)
     }
 }
 
-void flow(const Graph &G)
+void flow(Graph &G, int p)
 {
     try
     {
@@ -196,6 +197,13 @@ void flow(const Graph &G)
             model.addConstr(constr, GRB_LESS_EQUAL, G.r - G.Weight[i]);
         }
 
+        TreeSeparation cb = TreeSeparation(env, y, x, G, G.r, p);
+        if(p > 0)
+        {
+            model.set(GRB_IntParam_PreCrush, 1);
+            model.setCallback(&cb);
+        }
+
         model.optimize();
         // General solver information graphtype n m r best_obj gap% runtime nodecount
         std::cout << G.graphtype << " ";
@@ -206,8 +214,11 @@ void flow(const Graph &G)
         std::cout << model.get(GRB_DoubleAttr_MIPGap) << " ";
         std::cout << model.get(GRB_DoubleAttr_Runtime) << " ";
         std::cout << model.get(GRB_DoubleAttr_NodeCount) << " ";
-        // Branch and cut information cuts, callback time - NOT USED HERE
-
+        
+        // Branch and cut information cuts, callback time
+        std::cout << p << " ";
+        std::cout << cb.userCuts << " ";
+        std::cout << cb.userTime << " ";
         // End line
         std::cout << std::endl;
     }

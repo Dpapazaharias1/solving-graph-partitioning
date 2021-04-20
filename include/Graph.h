@@ -64,7 +64,7 @@ public:
       void SP(
           std::vector<double> CostTo,
           int s,
-          double *parent,
+          int *parent,
           double *cost);
 
       /**
@@ -82,7 +82,7 @@ public:
           std::vector<double> CostTo,
           int s,
           int r,
-          double *parent,
+          int *parent,
           double *cost);
 
       /**

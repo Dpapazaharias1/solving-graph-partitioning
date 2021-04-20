@@ -57,6 +57,7 @@ int main(int argc, char *argv[])
         const char *formulation = argv[4];
         std::cout << "Constructing Graph..." << std::endl;
         Graph G(filetype, filename, weighted);
+        //G.print();
         if(strcmp(formulation, "-tri") == 0)
         {
             std::cout << "Starting triangle formulation..." << std::endl;
@@ -66,7 +67,8 @@ int main(int argc, char *argv[])
         if(strcmp(formulation, "-flow") == 0)
         {
             std::cout << "Starting flow formulation..." << std::endl;
-            flow(G);
+            int p = std::stoi(argv[5]);
+            flow(G, p);
         }
         if(strcmp(formulation, "-path") == 0)
         {

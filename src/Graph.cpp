@@ -179,7 +179,7 @@ Graph::Graph(
 void Graph::SP(
 	std::vector<double> CostTo,
 	int s,
-	double *parent,
+	int *parent,
 	double *cost)
 {
 	for (int i = 0; i < n; i++)
@@ -221,7 +221,7 @@ std::vector<int> Graph::Prim(
 	std::vector<double> CostTo,
 	int s,
 	int r,
-	double *parent,
+	int *parent,
 	double *cost)
 {
 	for (int i = 0; i < n; i++)
@@ -247,23 +247,108 @@ std::vector<int> Graph::Prim(
 	std::vector<int> treeNodes;
 	int weight = 0;
 
+	//std::vector<bool> is_leaf(n, false);
+	std::vector<bool> in_tree(n, false);
+	in_tree[s] = true;
+	//is_leaf[s] = true;
+	//std::vector<int> tree_deg(n, 0);
+
 	while (!Q.isEmpty() && weight < r + 1)
 	{
 		int min = Q.extractMin().v;
+		in_tree[min] = true;
 		treeNodes.push_back(min);
 		weight += Weight[min]; // TODO: Need to change to vertex weight
 		for (int j = EdgesBegin[min]; j < Degree[min] + EdgesBegin[min]; j++)
 		{
 			double temp = CostTo[j];
-			if (temp < cost[EdgeTo[j]])
+			if (temp < cost[EdgeTo[j]] && !in_tree[EdgeTo[j]])
 			{
 				cost[EdgeTo[j]] = temp;
-				parent[EdgeTo[j]] = j;
+				for(int k = EdgesBegin[EdgeTo[j]]; k <  EdgesBegin[EdgeTo[j]] + Degree[EdgeTo[j]]; k++)
+				{
+					if (EdgeTo[k] == min)
+					{
+						parent[EdgeTo[j]] = k;
+					}
+				}
+				//parent[EdgeTo[j]] = j;
 				Q.decreaseKey(EdgeTo[j], temp);
+			}
+			
+		}
+		/*
+		tree_deg[min]++;
+		is_leaf[min] = true;
+		if (parent[min] > -1)
+		{
+			int j = EdgeTo[parent[min]];
+			tree_deg[j]++;
+			if (is_leaf[j])
+			{
+				is_leaf[j] = false;
+			}
+		}
+		*/
+		
+		
+	}
+	/*
+	std::vector<int> leaf_nodes;
+	int min_weight = r;
+	int min_leaf = 0;
+	for(int i = 0; i < n; i++)
+	{	
+		if (is_leaf[i] || tree_deg[i] == 1)
+		{
+			std::cout << "Leaf " << i << ", weight:" << Weight[i] << std::endl;
+			leaf_nodes.push_back(i);
+			if (Weight[i] < min_weight)
+			{
+				min_weight = Weight[i];
+				min_leaf = leaf_nodes.size() - 1;
 			}
 		}
 	}
-	return treeNodes;
+	
+	//std::cout << "Leaf with min weight " << leaf_nodes[min_leaf] << ", " <<  min_weight << std::endl; 
+	while( weight - min_weight > r)
+	{
+		
+		int leaf = leaf_nodes[min_leaf];
+		int p = EdgeTo[parent[leaf]];
+		tree_deg[p]--;
+		in_tree[leaf] = false;
+		leaf_nodes.erase(leaf_nodes.begin() + min_leaf);
+		parent[leaf_nodes[min_leaf]] = -1;
+		weight -= min_weight;
+		min_weight = r;
+		if(tree_deg[p] == 1)
+		{
+			is_leaf[p] = true;
+			leaf_nodes.push_back(p);
+		}
+		for( int i = 0; i < leaf_nodes.size(); i++)
+		{
+			int j = leaf_nodes[i];
+			if (Weight[j] < min_weight)
+			{
+				min_weight = Weight[j];
+				min_leaf = i;
+			}
+		}
+		//std::cout << "Tree not a minimal cover, remove node " << leaf << std::endl;
+		//std::cout << "New weight: " << weight << ", new min leaf: " << min_weight<<std::endl;
+	}
+	for(int i = 0; i < n; i++)
+	{
+		if( in_tree[i])
+		{
+			treeNodes.push_back(i);
+		}
+	}
+	*/
+	return treeNodes; 
 }
 
 void Graph::print()
