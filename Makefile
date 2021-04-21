@@ -11,9 +11,13 @@ INCSPDLOG = /usr/local/Cellar/spdlog/include/
 CPPLIBMAC = -L$(MACPATH)/lib/ -lgurobi_c++ -lgurobi90 $(CPPSTDLIB) -lpthread -lm
 
 # Linux Path
-GRBPATH   = /opt/gurobi911/linux64
+# GRBPATH   = /opt/gurobi911/linux64
+GRBPATH   = /util/academic/gurobi/gurobi911/linux64/
 INCGRB    = $(GRBPATH)/include/
 CPPLIBGRB = -L$(GRBPATH)/lib/ -lgurobi_g++5.2 -lgurobi91 $(CPPSTDLIB) -lpthread -lm
+
+
+
 
 # C++ Compiler and Flags
 CXX=g++
@@ -23,6 +27,7 @@ CXX=g++
 
 # Linux Flags
 CXXFLAGS=-std=c++17 -O3 -Iinclude/ -I$(INCSPDLOG) -I$(INCGRB) $(CPPLIBGRB)
+
 
 main: main.o Graph.o Formulation.o MinHeap.o PathSeparation.o TreeSeparation.o
 	$(CXX) $(CXXFLAGS) -o $(BINPATH)main main.o Graph.o Formulation.o MinHeap.o PathSeparation.o TreeSeparation.o $(CPPLIBGRB)

@@ -1,0 +1,164 @@
+==> flow+prim-w/toroidal-grid/toroidal-grid-50-0.out <==
+toroidal-grid 40 80 2230 14724 0 7.3289 449 50 17 0.00542438 
+
+==> flow+prim-w/toroidal-grid/toroidal-grid-50-10.out <==
+toroidal-grid 50 100 8932 5685 0 7.90402 29 50 0 0.00152137 
+
+==> flow+prim-w/toroidal-grid/toroidal-grid-50-11.out <==
+toroidal-grid 50 100 11165 4426 0 12.0966 80 50 4 0.00245534 
+
+==> flow+prim-w/toroidal-grid/toroidal-grid-50-12.out <==
+toroidal-grid 50 100 13398 3604 0 4.89975 30 50 0 0.000890436 
+
+==> flow+prim-w/toroidal-grid/toroidal-grid-50-13.out <==
+toroidal-grid 50 100 15631 3168 0 5.39222 7 50 0 0.000472379 
+
+==> flow+prim-w/toroidal-grid/toroidal-grid-50-14.out <==
+toroidal-grid 50 100 17864 3102 0 19.9499 81 50 1 0.00388986 
+
+==> flow+prim-w/toroidal-grid/toroidal-grid-50-15.out <==
+toroidal-grid 50 100 20097 1874 0 31.0316 59 50 8 0.00439363 
+
+==> flow+prim-w/toroidal-grid/toroidal-grid-50-16.out <==
+toroidal-grid 60 120 2374 21397 0 100.156 1698 50 46 0.0378414 
+
+==> flow+prim-w/toroidal-grid/toroidal-grid-50-17.out <==
+toroidal-grid 60 120 4749 13352 0 102.728 329 50 2 0.0110596 
+
+==> flow+prim-w/toroidal-grid/toroidal-grid-50-18.out <==
+toroidal-grid 60 120 7124 10552 0 208.153 1231 50 9 0.0380237 
+
+==> flow+prim-w/toroidal-grid/toroidal-grid-50-19.out <==
+toroidal-grid 60 120 9499 8418 0 134.922 742 50 7 0.0252211 
+
+==> flow+prim-w/toroidal-grid/toroidal-grid-50-1.out <==
+toroidal-grid 40 80 4460 7802 0 4.67023 139 50 4 0.00232861 
+
+==> flow+prim-w/toroidal-grid/toroidal-grid-50-20.out <==
+toroidal-grid 60 120 11874 6648 0 82.127 228 50 3 0.0106984 
+
+==> flow+prim-w/toroidal-grid/toroidal-grid-50-21.out <==
+toroidal-grid 60 120 14249 4701 0 15.6685 92 50 6 0.00343271 
+
+==> flow+prim-w/toroidal-grid/toroidal-grid-50-22.out <==
+toroidal-grid 60 120 16624 4151 0 4.8249 1 50 0 0.000123056 
+
+==> flow+prim-w/toroidal-grid/toroidal-grid-50-23.out <==
+toroidal-grid 60 120 18999 4151 0 15.3815 7 50 0 0.000896401 
+
+==> flow+prim-w/toroidal-grid/toroidal-grid-50-24.out <==
+toroidal-grid 60 120 21374 3893 0 39.2787 54 50 0 0.00318741 
+
+==> flow+prim-w/toroidal-grid/toroidal-grid-50-25.out <==
+toroidal-grid 60 120 23749 2928 0 56.4004 130 50 5 0.00608975 
+
+==> flow+prim-w/toroidal-grid/toroidal-grid-50-26.out <==
+toroidal-grid 60 120 26124 1208 0 41.6292 28 50 3 0.00418565 
+
+==> flow+prim-w/toroidal-grid/toroidal-grid-50-27.out <==
+toroidal-grid 70 140 2410 25442 0 335.143 6648 50 148 0.151262 
+
+==> flow+prim-w/toroidal-grid/toroidal-grid-50-28.out <==
+toroidal-grid 70 140 4820 16054 0 379.93 1932 50 24 0.0580097 
+
+==> flow+prim-w/toroidal-grid/toroidal-grid-50-29.out <==
+toroidal-grid 70 140 7231 12724 0 483.894 1620 50 6 0.0475578 
+
+==> flow+prim-w/toroidal-grid/toroidal-grid-50-2.out <==
+toroidal-grid 40 80 6690 5282 0 2.61993 35 50 1 0.000772992 
+
+==> flow+prim-w/toroidal-grid/toroidal-grid-50-30.out <==
+toroidal-grid 70 140 9641 10573 0 281.124 562 50 7 0.0232884 
+
+==> flow+prim-w/toroidal-grid/toroidal-grid-50-31.out <==
+toroidal-grid 70 140 12052 8816 0 146.505 102 50 0 0.00688015 
+
+==> flow+prim-w/toroidal-grid/toroidal-grid-50-32.out <==
+toroidal-grid 70 140 14462 8153 0 309.782 888 50 2 0.0351821 
+
+==> flow+prim-w/toroidal-grid/toroidal-grid-50-33.out <==
+toroidal-grid 70 140 16873 6151 0 99.4963 149 50 3 0.00865169 
+
+==> flow+prim-w/toroidal-grid/toroidal-grid-50-34.out <==
+toroidal-grid 70 140 19283 5493 0 42.2258 50 50 3 0.00341243 
+
+==> flow+prim-w/toroidal-grid/toroidal-grid-50-35.out <==
+toroidal-grid 70 140 21693 5335 0 50.1641 23 50 0 0.00338784 
+
+==> flow+prim-w/toroidal-grid/toroidal-grid-50-36.out <==
+toroidal-grid 70 140 24104 4855 0 168.296 162 50 1 0.0104316 
+
+==> flow+prim-w/toroidal-grid/toroidal-grid-50-37.out <==
+toroidal-grid 70 140 26514 4331 0 198.321 162 50 0 0.00816069 
+
+==> flow+prim-w/toroidal-grid/toroidal-grid-50-38.out <==
+toroidal-grid 70 140 28925 2959 0 277.941 226 50 1 0.0122991 
+
+==> flow+prim-w/toroidal-grid/toroidal-grid-50-39.out <==
+toroidal-grid 70 140 31335 1988 0 170.923 83 50 6 0.00847604 
+
+==> flow+prim-w/toroidal-grid/toroidal-grid-50-3.out <==
+toroidal-grid 40 80 8920 4153 0 4.84982 254 50 9 0.00333812 
+
+==> flow+prim-w/toroidal-grid/toroidal-grid-50-40.out <==
+toroidal-grid 80 160 2417 28455 0 205.366 1590 50 45 0.0668206 
+
+==> flow+prim-w/toroidal-grid/toroidal-grid-50-41.out <==
+toroidal-grid 80 160 4835 18873 0 4230.49 15636 50 154 0.460068 
+
+==> flow+prim-w/toroidal-grid/toroidal-grid-50-42.out <==
+toroidal-grid 80 160 7253 14780 0 1583.96 2655 50 27 0.117747 
+
+==> flow+prim-w/toroidal-grid/toroidal-grid-50-43.out <==
+toroidal-grid 80 160 9671 12641 0 2692.98 3862 50 22 0.156862 
+
+==> flow+prim-w/toroidal-grid/toroidal-grid-50-44.out <==
+toroidal-grid 80 160 12088 11149 0 2570.84 5129 50 13 0.186612 
+
+==> flow+prim-w/toroidal-grid/toroidal-grid-50-45.out <==
+toroidal-grid 80 160 14506 9393 0 455.805 551 50 6 0.0330763 
+
+==> flow+prim-w/toroidal-grid/toroidal-grid-50-46.out <==
+toroidal-grid 80 160 16924 8000 0 404.229 431 50 4 0.0294661 
+
+==> flow+prim-w/toroidal-grid/toroidal-grid-50-47.out <==
+toroidal-grid 80 160 19342 6632 0 292.695 603 50 15 0.0356838 
+
+==> flow+prim-w/toroidal-grid/toroidal-grid-50-48.out <==
+toroidal-grid 80 160 21759 5843 0 52.1963 3 50 0 0.0011671 
+
+==> flow+prim-w/toroidal-grid/toroidal-grid-50-49.out <==
+toroidal-grid 80 160 24177 5843 0 91.2053 15 50 0 0.00239642 
+
+==> flow+prim-w/toroidal-grid/toroidal-grid-50-4.out <==
+toroidal-grid 40 80 11150 2885 0 1.24927 7 50 0 0.000272637 
+
+==> flow+prim-w/toroidal-grid/toroidal-grid-50-50.out <==
+toroidal-grid 80 160 26595 5538 0 263.037 54 50 0 0.0045967 
+
+==> flow+prim-w/toroidal-grid/toroidal-grid-50-51.out <==
+toroidal-grid 80 160 29013 5426 0 542.975 349 50 0 0.0227351 
+
+==> flow+prim-w/toroidal-grid/toroidal-grid-50-52.out <==
+toroidal-grid 80 160 31430 4304 0 452.52 138 50 3 0.0126928 
+
+==> flow+prim-w/toroidal-grid/toroidal-grid-50-53.out <==
+toroidal-grid 80 160 33848 3190 0 558.114 147 50 2 0.0107654 
+
+==> flow+prim-w/toroidal-grid/toroidal-grid-50-54.out <==
+toroidal-grid 80 160 36266 1857 0 719.163 230 50 11 0.0200714 
+
+==> flow+prim-w/toroidal-grid/toroidal-grid-50-5.out <==
+toroidal-grid 40 80 13380 2802 0 3.44012 43 50 1 0.000828584 
+
+==> flow+prim-w/toroidal-grid/toroidal-grid-50-6.out <==
+toroidal-grid 40 80 15610 1631 0 2.45427 1 50 4 0.000446809 
+
+==> flow+prim-w/toroidal-grid/toroidal-grid-50-7.out <==
+toroidal-grid 50 100 2233 17206 0 14.2086 250 50 6 0.00550888 
+
+==> flow+prim-w/toroidal-grid/toroidal-grid-50-8.out <==
+toroidal-grid 50 100 4466 11023 0 47.5031 803 50 16 0.0143078 
+
+==> flow+prim-w/toroidal-grid/toroidal-grid-50-9.out <==
+toroidal-grid 50 100 6699 7659 0 20.5911 375 50 2 0.00870849 

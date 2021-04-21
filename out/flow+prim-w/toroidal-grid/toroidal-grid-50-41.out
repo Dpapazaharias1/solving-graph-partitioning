@@ -1,0 +1,11 @@
+Number of arguments: 6
+Constructing Graph...
+n, r: 80, 10
+0.125
+w(G), r: 38684, 4835
+Starting flow formulation...
+xvars..
+yvars..
+constr1..
+constr2..
+toroidal-grid 80 160 4835 18873 0 4230.49 15636 50 154 0.460068 
