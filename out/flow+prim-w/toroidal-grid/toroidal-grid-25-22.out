@@ -9,3 +9,14 @@ yvars..
 constr1..
 constr2..
 toroidal-grid 60 120 16624 4151 0 5.08991 1 25 0 0.000117829 
+Number of arguments: 6
+Constructing Graph...
+n, r: 60, 35
+0.583333
+w(G), r: 28499, 16624
+Starting flow formulation...
+xvars..
+yvars..
+constr1..
+constr2..
+toroidal-grid 60 120 16624 4151 0 4.83816 1 25 0 0.000165382 

@@ -1,0 +1,7 @@
+Number of arguments: 6
+Constructing Graph...
+n, r: 80, 15
+0.1875
+w(G), r: 38684, 7253
+Starting path+tree formulation...
+toroidal-grid 80 160 7253 14780 0 1441.5 10737 21311 4338307 0.110717 21.7652 25 0 0 
