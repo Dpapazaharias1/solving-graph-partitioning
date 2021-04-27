@@ -1,0 +1,7 @@
+Number of arguments: 6
+Constructing Graph...
+n, r: 80, 35
+0.4375
+w(G), r: 38684, 16924
+Starting path formulation...
+planar-grid 80 142 16924 3701 0 60.8616 221 17483 163995 0.0774191 0.99104 0 0 0 

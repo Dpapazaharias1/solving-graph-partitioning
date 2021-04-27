@@ -1,0 +1,10 @@
+Number of arguments: 6
+Constructing Graph...
+n, r: 100, 10
+0.1
+w(G), r: 47884, 4788
+Starting flow formulation...
+xvars..
+yvars..
+constr1..
+constr2..

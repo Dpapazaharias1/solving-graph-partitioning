@@ -153,7 +153,7 @@ void flow(Graph &G, int p)
 
         model.set(GRB_IntAttr_ModelSense, 1);
         model.set(GRB_IntParam_OutputFlag, 0);
-        model.set(GRB_IntParam_Cuts, 0);
+        //model.set(GRB_IntParam_Cuts, 0);
 	model.set(GRB_DoubleParam_TimeLimit, 7200);
         model.update();
         std::cout << "constr1.." << std::endl;
@@ -199,8 +199,8 @@ void flow(Graph &G, int p)
         }
 
         TreeSeparation cb = TreeSeparation(env, y, x, G, G.r, p);
-        model.set(GRB_IntParam_PreCrush, 1);
-        model.setCallback(&cb);
+        //model.set(GRB_IntParam_PreCrush, 1);
+        //model.setCallback(&cb);
 
         model.optimize();
         // General solver information graphtype n m r best_obj gap% runtime nodecount

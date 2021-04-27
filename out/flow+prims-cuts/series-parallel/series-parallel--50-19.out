@@ -1,0 +1,11 @@
+Number of arguments: 6
+Constructing Graph...
+n, r: 44, 20
+0.454545
+w(G), r: 19791, 8995
+Starting flow formulation...
+xvars..
+yvars..
+constr1..
+constr2..
+series-parallel 44 60 8995 1167 0 0.243204 1 50 0 5.0868e-05 

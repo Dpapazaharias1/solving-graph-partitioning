@@ -1,0 +1,11 @@
+Number of arguments: 6
+Constructing Graph...
+n, r: 44, 15
+0.340909
+w(G), r: 19791, 6746
+Starting triangle formulation...
+xvars..
+yvars..
+constr1..
+constr2..
+series-parallel 44 60 6746 1876 0 12.3651 31 

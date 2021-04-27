@@ -1,0 +1,11 @@
+Number of arguments: 6
+Constructing Graph...
+n, r: 50, 30
+0.6
+w(G), r: 22331, 13398
+Starting triangle formulation...
+xvars..
+yvars..
+constr1..
+constr2..
+planar-grid 50 85 13398 1971 0 23.0877 1 

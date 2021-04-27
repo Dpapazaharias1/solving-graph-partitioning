@@ -1,0 +1,128 @@
+==> series-parallel/series-parallel-0.out <==
+series-parallel 28 40 2618 5625 0 1.32507 35 
+
+==> series-parallel/series-parallel-10.out <==
+series-parallel 35 50 2394 6881 0 0.962821 1 
+
+==> series-parallel/series-parallel-11.out <==
+series-parallel 35 50 4789 2917 0 6.22088 81 
+
+==> series-parallel/series-parallel-12.out <==
+series-parallel 35 50 7183 980 0 1.49603 1 
+
+==> series-parallel/series-parallel-13.out <==
+series-parallel 35 50 9578 807 0 1.92249 1 
+
+==> series-parallel/series-parallel-14.out <==
+series-parallel 35 50 11972 662 0 1.2706 1 
+
+==> series-parallel/series-parallel-15.out <==
+series-parallel 35 50 14367 453 0 2.13762 1 
+
+==> series-parallel/series-parallel-16.out <==
+series-parallel 44 60 2248 6958 0 3.41751 1 
+
+==> series-parallel/series-parallel-17.out <==
+series-parallel 44 60 4497 3802 0 7.97894 85 
+
+==> series-parallel/series-parallel-18.out <==
+series-parallel 44 60 6746 1876 0 12.3651 31 
+
+==> series-parallel/series-parallel-19.out <==
+series-parallel 44 60 8995 1167 0 12.2108 1 
+
+==> series-parallel/series-parallel-1.out <==
+series-parallel 28 40 5237 2209 0 0.776272 1 
+
+==> series-parallel/series-parallel-20.out <==
+series-parallel 44 60 11244 1116 0 26.9905 25 
+
+==> series-parallel/series-parallel-21.out <==
+series-parallel 44 60 13493 753 0 32.7823 1 
+
+==> series-parallel/series-parallel-22.out <==
+series-parallel 44 60 15742 360 0 142.577 36 
+
+==> series-parallel/series-parallel-23.out <==
+series-parallel 44 60 17991 189 0 49.2703 1 
+
+==> series-parallel/series-parallel-24.out <==
+series-parallel 46 65 2295 9824 0 4.94895 16 
+
+==> series-parallel/series-parallel-25.out <==
+series-parallel 46 65 4590 3647 0 7.41747 26 
+
+==> series-parallel/series-parallel-26.out <==
+series-parallel 46 65 6885 1310 0 10.827 1 
+
+==> series-parallel/series-parallel-27.out <==
+series-parallel 46 65 9180 1093 0 20.4122 13 
+
+==> series-parallel/series-parallel-28.out <==
+series-parallel 46 65 11476 1093 0 15.6383 1 
+
+==> series-parallel/series-parallel-29.out <==
+series-parallel 46 65 13771 290 0 2.25153 1 
+
+==> series-parallel/series-parallel-2.out <==
+series-parallel 28 40 7856 1047 0 0.643242 1 
+
+==> series-parallel/series-parallel-30.out <==
+series-parallel 46 65 16066 290 0 17.0868 1 
+
+==> series-parallel/series-parallel-31.out <==
+series-parallel 46 65 18361 290 0 44.9779 1 
+
+==> series-parallel/series-parallel-32.out <==
+series-parallel 46 65 20656 254 0 89.0066 1 
+
+==> series-parallel/series-parallel-33.out <==
+series-parallel 51 75 2230 11013 0 3.19938 1 
+
+==> series-parallel/series-parallel-34.out <==
+series-parallel 51 75 4460 5866 0 17.5722 87 
+
+==> series-parallel/series-parallel-35.out <==
+series-parallel 51 75 6690 3826 0 845.067 87 
+
+==> series-parallel/series-parallel-36.out <==
+series-parallel 51 75 8920 2931 0 1201.7 119 
+
+==> series-parallel/series-parallel-37.out <==
+series-parallel 51 75 11150 2104 0 129.633 67 
+
+==> series-parallel/series-parallel-38.out <==
+series-parallel 51 75 13380 1771 0 126.295 1 
+
+==> series-parallel/series-parallel-39.out <==
+series-parallel 51 75 15610 1770 0 452.029 45 
+
+==> series-parallel/series-parallel-3.out <==
+series-parallel 28 40 10475 624 0 0.643564 1 
+
+==> series-parallel/series-parallel-40.out <==
+series-parallel 51 75 17840 1405 0 464.77 17 
+
+==> series-parallel/series-parallel-41.out <==
+series-parallel 51 75 20070 1187 0 2186.5 50 
+
+==> series-parallel/series-parallel-42.out <==
+series-parallel 51 75 22300 262 0 449.276 1 
+
+==> series-parallel/series-parallel-4.out <==
+series-parallel 28 40 13094 371 0 0.706172 1 
+
+==> series-parallel/series-parallel-5.out <==
+series-parallel 30 45 2478 9322 0 1.67458 84 
+
+==> series-parallel/series-parallel-6.out <==
+series-parallel 30 45 4957 5429 0 3.29579 22 
+
+==> series-parallel/series-parallel-7.out <==
+series-parallel 30 45 7436 3254 0 2.62653 40 
+
+==> series-parallel/series-parallel-8.out <==
+series-parallel 30 45 9914 1998 0 1.20794 1 
+
+==> series-parallel/series-parallel-9.out <==
+series-parallel 30 45 12393 869 0 0.59878 1 

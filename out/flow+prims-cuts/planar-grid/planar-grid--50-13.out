@@ -1,0 +1,11 @@
+Number of arguments: 6
+Constructing Graph...
+n, r: 100, 70
+0.7
+w(G), r: 47884, 33518
+Starting flow formulation...
+xvars..
+yvars..
+constr1..
+constr2..
+planar-grid 100 180 33518 2909 0 248.434 89 50 1 0.0107778 
