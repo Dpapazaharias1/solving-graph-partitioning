@@ -1,7 +1,0 @@
-Number of arguments: 6
-Constructing Graph...
-n, r: 46, 40
-0.869565
-w(G), r: 21116, 18361
-Starting path formulation...
-series-parallel 46 65 18361 290 0 0.284015 17 4011 3149 0.021185 0.0217088 0 0 0 

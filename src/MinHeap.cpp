@@ -1,4 +1,4 @@
-#include "MinHeap.h"
+#include "MinHeap.hpp"
 
 void MinHeap::minHeapify(int idx)
 {
