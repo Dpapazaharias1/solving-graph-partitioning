@@ -1,0 +1,44 @@
+Instance -TRI graph_name n m r best_obj mip_gap runtime b&b nodes
+Instance -FLOW graph_name n m r best_obj mip_gap runtime b&b_nodes cut_type prob_cut r_pct_trees_cut num_cuts separation_time
+Instance -PATH graph_name n m r best_obj mip_gap runtime b&b_nodes num_lazy num_user lazy_time user_time -tree_cut_type(not used)
+Instance -FLOW+ graph_name n m r best_obj mip_gap runtime b&b_nodes cut_type prob_cut r_pct_trees_cut num_cuts separation_time
+watts-strogatz-45.dat -TRI watts-strogatz 30 90 1484 26433 0 2.11656 1
+watts-strogatz-45.dat -FLOW watts-strogatz 30 90 1484 26433 0 0.99469 1 -none 0 0 0 0
+watts-strogatz-45.dat -PATH watts-strogatz 30 90 1484 26433 0 0.181691 128 173 887 0.00106595 0.00762992 -path 0 0
+watts-strogatz-45.dat -FLOW+ watts-strogatz 30 90 1484 26433 0 0.604722 185 -prim 50 1 2 0.001683
+watts-strogatz-46.dat -TRI watts-strogatz 30 90 2968 17336 0 18.5126 573
+watts-strogatz-46.dat -FLOW watts-strogatz 30 90 2968 17336 0 7.99397 481 -none 0 0 0 0
+watts-strogatz-46.dat -PATH watts-strogatz 30 90 2968 17336 0 10.3557 7009 708 407762 0.00280975 1.01175 -path 0 0
+watts-strogatz-46.dat -FLOW+ watts-strogatz 30 90 2968 17336 0 9.77701 2258 -prim 50 1 56 0.0100915
+watts-strogatz-47.dat -TRI watts-strogatz 30 90 4452 13079 0 9.84256 156
+watts-strogatz-47.dat -FLOW watts-strogatz 30 90 4452 13079 0 4.43599 159 -none 0 0 0 0
+watts-strogatz-47.dat -PATH watts-strogatz 30 90 4452 13079 0 4.79134 2316 743 240674 0.00252397 0.465599 -path 0 0
+watts-strogatz-47.dat -FLOW+ watts-strogatz 30 90 4452 13079 0 2.97082 349 -prim 50 1 14 0.00246717
+watts-strogatz-48.dat -TRI watts-strogatz 30 90 1484 27276 0 2.7018 53
+watts-strogatz-48.dat -FLOW watts-strogatz 30 90 1484 27276 0 1.20041 66 -none 0 0 0 0
+watts-strogatz-48.dat -PATH watts-strogatz 30 90 1484 27276 0 0.33202 490 128 1293 0.00109406 0.0208498 -path 0 0
+watts-strogatz-48.dat -FLOW+ watts-strogatz 30 90 1484 27276 0 0.820554 400 -prim 50 1 30 0.00427033
+watts-strogatz-49.dat -TRI watts-strogatz 30 90 2968 16917 0 5.69861 71
+watts-strogatz-49.dat -FLOW watts-strogatz 30 90 2968 16917 0 2.3888 67 -none 0 0 0 0
+watts-strogatz-49.dat -PATH watts-strogatz 30 90 2968 16917 0 0.802202 295 529 8192 0.00132227 0.0282406 -path 0 0
+watts-strogatz-49.dat -FLOW+ watts-strogatz 30 90 2968 16917 0 1.07435 141 -prim 50 1 1 0.000869472
+watts-strogatz-50.dat -TRI watts-strogatz 30 90 4452 12891 0 6.72289 135
+watts-strogatz-50.dat -FLOW watts-strogatz 30 90 4452 12891 0 5.1467 183 -none 0 0 0 0
+watts-strogatz-50.dat -PATH watts-strogatz 30 90 4452 12891 0 2.37043 856 771 77925 0.00195368 0.14448 -path 0 0
+watts-strogatz-50.dat -FLOW+ watts-strogatz 30 90 4452 12891 0 2.0904 234 -prim 50 1 9 0.00173449
+erdos-renyi-45.dat -TRI erdos-renyi 30 94 1484 31212 0 3.81949 388
+erdos-renyi-45.dat -FLOW erdos-renyi 30 94 1484 31212 0 2.58135 583 -none 0 0 0 0
+erdos-renyi-45.dat -PATH erdos-renyi 30 94 1484 31212 0 0.878454 1254 274 2843 0.00196938 0.0486877 -path 0 0
+erdos-renyi-45.dat -FLOW+ erdos-renyi 30 94 1484 31212 0 1.95909 1548 -prim 50 1 48 0.0102438
+erdos-renyi-46.dat -TRI erdos-renyi 30 94 2968 22727 0 20.326 633
+erdos-renyi-46.dat -FLOW erdos-renyi 30 94 2968 22727 0 8.33986 578 -none 0 0 0 0
+erdos-renyi-46.dat -PATH erdos-renyi 30 94 2968 22727 0 8.02324 5111 680 214418 0.00248098 0.516668 -path 0 0
+erdos-renyi-46.dat -FLOW+ erdos-renyi 30 94 2968 22727 0 8.25011 1901 -prim 50 1 16 0.00878337
+erdos-renyi-47.dat -TRI erdos-renyi 30 94 4452 17897 0 8.17573 143
+erdos-renyi-47.dat -FLOW erdos-renyi 30 94 4452 17897 0 4.57384 175 -none 0 0 0 0
+erdos-renyi-47.dat -PATH erdos-renyi 30 94 4452 17897 0 1.83062 548 855 31461 0.0024747 0.0821458 -path 0 0
+erdos-renyi-47.dat -FLOW+ erdos-renyi 30 94 4452 17897 0 2.19548 239 -prim 50 1 2 0.00176957
+erdos-renyi-48.dat -TRI erdos-renyi 30 96 1484 32599 0 4.64387 106
+erdos-renyi-48.dat -FLOW erdos-renyi 30 96 1484 32599 0 1.80818 99 -none 0 0 0 0
+erdos-renyi-48.dat -PATH erdos-renyi 30 96 1484 32599 0 1.225 1437 403 2665 0.00181846 0.0626703 -path 0 0
+erdos-renyi-48.dat -FLOW+ erdos-renyi 30 96 1484 32599 0 2.53951 1125 -prim 50 1 13 0.00687065

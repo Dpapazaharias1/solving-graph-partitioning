@@ -436,9 +436,8 @@ void tree_cover_formulation(Graph &G)
         cb.is_tcf = true;
         model.setCallback(&cb);
         */
-
         model.optimize();
-
+        std::chrono::high_resolution_clock::time_point t1 = std::chrono::high_resolution_clock::now();
         GRBModel MST_model = GRBModel(*env);
 
         GRBVar *z = new GRBVar[G.n * (G.n + 1)];
@@ -553,15 +552,16 @@ void tree_cover_formulation(Graph &G)
             }
         }
         
-        std::chrono::high_resolution_clock::time_point t1 = std::chrono::high_resolution_clock::now();
-        std::chrono::duration<double> userTime = std::chrono::duration_cast< std::chrono::duration<double> >(t1 - t0);
+        std::chrono::high_resolution_clock::time_point t2 = std::chrono::high_resolution_clock::now();
+        std::chrono::duration<double> optTime = std::chrono::duration_cast< std::chrono::duration<double> >(t2 - t0);
+        std::chrono::duration<double> userTime = std::chrono::duration_cast< std::chrono::duration<double> >(t2 - t1);
         // General solver information graphtype n m r best_obj gap% runtime nodecount
         std::cout << G.graphtype << " ";
         std::cout << G.n << " ";
         std::cout << G.m << " ";
         std::cout << G.r << " ";
         std::cout << model.get(GRB_DoubleAttr_ObjVal) << " ";
-        std::cout << model.get(GRB_DoubleAttr_Runtime) << " ";
+        std::cout << optTime.count() << " ";
         // Branch and cut information cuts, callback time
         std::cout << userCuts << " ";
         std::cout << userTime.count() << " ";
@@ -733,6 +733,7 @@ void dynamic_program_lp(Graph &G)
     model.optimize();
     bool violated = true;
     GRBLinExpr tree_cut;
+    std::chrono::high_resolution_clock::time_point t1 = std::chrono::high_resolution_clock::now();
     while (violated) {
         violated = false;
         for(int k = 0; k < G.n - 1; k++) { hvar[k].set(GRB_DoubleAttr_Obj, -y[edge_indices[k]].get(GRB_DoubleAttr_X));}
@@ -763,15 +764,16 @@ void dynamic_program_lp(Graph &G)
         }
         model.optimize();
     }
-    std::chrono::high_resolution_clock::time_point t1 = std::chrono::high_resolution_clock::now();
-    std::chrono::duration<double> userTime = std::chrono::duration_cast< std::chrono::duration<double> >(t1 - t0);
+    std::chrono::high_resolution_clock::time_point t2 = std::chrono::high_resolution_clock::now();
+    std::chrono::duration<double> optTime = std::chrono::duration_cast< std::chrono::duration<double> >(t2 - t0);
+    std::chrono::duration<double> userTime = std::chrono::duration_cast< std::chrono::duration<double> >(t2 - t1);
     // General solver information graphtype n m r best_obj gap% runtime nodecount
     std::cout << G.graphtype << " ";
     std::cout << G.n << " ";
     std::cout << G.m << " ";
     std::cout << G.r << " ";
     std::cout << model.get(GRB_DoubleAttr_ObjVal) << " ";
-    std::cout << model.get(GRB_DoubleAttr_Runtime) << " ";
+    std::cout << optTime.count() << " ";
     // Branch and cut information cuts, callback time
     std::cout << userCuts << " ";
     std::cout << userTime.count() << " ";
@@ -973,14 +975,14 @@ void tree_lp(Graph &G)
 
         model.optimize();
         std::chrono::high_resolution_clock::time_point t1 = std::chrono::high_resolution_clock::now();
-        std::chrono::duration<double> userTime = std::chrono::duration_cast< std::chrono::duration<double> >(t1 - t0);
+        std::chrono::duration<double> optTime = std::chrono::duration_cast< std::chrono::duration<double> >(t1 - t0);
         // General solver information graphtype n m r best_obj gap% runtime nodecount
         std::cout << G.graphtype << " ";
         std::cout << G.n << " ";
         std::cout << G.m << " ";
         std::cout << G.r << " ";
         std::cout << model.get(GRB_DoubleAttr_ObjVal) << " ";
-        std::cout << model.get(GRB_DoubleAttr_Runtime) << " ";
+        std::cout << optTime.count() << " ";
         std::cout << std::endl;
     }
     catch (GRBException e)
@@ -1254,7 +1256,7 @@ void flow_relax(Graph &G, int p, float rpct)
                     {
                         hvar[e].set(GRB_DoubleAttr_Obj, -y[edge_index[e]].get(GRB_DoubleAttr_X));
                     }
-                    std::cout << "(Old tree) Current LP Value: "  << model.get(GRB_DoubleAttr_ObjVal) ", cuts added: " << user_cuts << std::endl;
+                    std::cout << "(Old tree) Current LP Value: "  << model.get(GRB_DoubleAttr_ObjVal) << ", cuts added: " << user_cuts << std::endl;
                 }
                 fvar.clear();
                 gvar.clear();

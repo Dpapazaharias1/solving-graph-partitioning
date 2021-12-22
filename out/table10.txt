@@ -1,0 +1,20 @@
+-TRI graph_name n m r best_obj mip_gap runtime b&b nodes
+-FLOW graph_name n m r best_obj mip_gap runtime b&b_nodes cut_type prob_cut r_pct_trees_cut num_cuts separation_time
+-PATH graph_name n m r best_obj mip_gap runtime b&b_nodes num_lazy num_user lazy_time user_time -tree_cut_type(not used)
+-FLOW+ graph_name n m r best_obj mip_gap runtime b&b_nodes cut_type prob_cut r_pct_trees_cut num_cuts separation_time
+real-0.dat -TRI karate 34 78 3 56 0 0.099647 1
+real-0.dat -FLOW karate 34 78 3 56 0 0.058841 1 -none 0 0 0 0
+real-0.dat -PATH karate 34 78 3 56 0 0.024014 1 152 38 0.00152516 0.000545126 -path 0 0
+real-0.dat -FLOW+ karate 34 78 3 56 0 0.062294 1 -prim 50 1 0 0
+real-1.dat -TRI karate 34 78 7 35 0 0.806138 1
+real-1.dat -FLOW karate 34 78 7 35 0 0.894886 13 -none 0 0 0 0
+real-1.dat -PATH karate 34 78 7 35 0 0.26104 7 689 1375 0.00272379 0.00438395 -path 0 0
+real-1.dat -FLOW+ karate 34 78 7 35 0 0.252044 25 -prim 50 1 0 0.000300074
+real-2.dat -TRI karate 34 78 10 24 0 0.636517 1
+real-2.dat -FLOW karate 34 78 10 24 0 0.14401 1 -none 0 0 0 0
+real-2.dat -PATH karate 34 78 10 24 0 0.0810621 1 864 1608 0.00162554 0.00253549 -path 0 0
+real-2.dat -FLOW+ karate 34 78 10 24 0 0.11714 1 -prim 50 1 2 5.909e-05
+real-3.dat -TRI dolphins 62 159 6 78 0 36.0354 38
+real-3.dat -FLOW dolphins 62 159 6 78 0 9.25647 7 -none 0 0 0 0
+real-3.dat -PATH dolphins 62 159 6 78 0 36.1992 2932 4722 393852 0.0294775 1.24999 -path 0 0
+real-3.dat -FLOW+ dolphins 62 159 6 78 0 79.7799 3848 -prim 50 1 13 0.0393748

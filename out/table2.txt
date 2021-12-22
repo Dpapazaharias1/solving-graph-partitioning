@@ -1,0 +1,115 @@
+Instance -TDLP Graph_type n m r lp-relaxation runtime num_cuts separation_time
+tree-0.dat -TDPLP tree 20 19 3 8 0.0263939
+tree-1.dat -TDPLP tree 20 19 6 3 0.00678428
+tree-2.dat -TDPLP tree 20 19 9 2 0.0102136
+tree-3.dat -TDPLP tree 20 19 3 7 0.00494884
+tree-4.dat -TDPLP tree 20 19 6 4 0.00838579
+tree-5.dat -TDPLP tree 20 19 9 2 0.010417
+tree-6.dat -TDPLP tree 20 19 3 8 0.00562268
+tree-7.dat -TDPLP tree 20 19 6 4 0.00686056
+tree-8.dat -TDPLP tree 20 19 9 2 0.0128317
+tree-9.dat -TDPLP tree 20 19 3 7 0.00656664
+tree-10.dat -TDPLP tree 20 19 6 4 0.00821955
+tree-11.dat -TDPLP tree 20 19 9 2 0.00812512
+tree-12.dat -TDPLP tree 20 19 3 7 0.0056438
+tree-13.dat -TDPLP tree 20 19 6 4 0.00715845
+tree-14.dat -TDPLP tree 20 19 9 2 0.0117231
+tree-15.dat -TDPLP tree 40 39 5 11 0.0104548
+tree-16.dat -TDPLP tree 40 39 10 4 0.0219193
+tree-17.dat -TDPLP tree 40 39 15 3 0.0574285
+tree-18.dat -TDPLP tree 40 39 5 11 0.00964902
+tree-19.dat -TDPLP tree 40 39 10 5 0.0212876
+tree-20.dat -TDPLP tree 40 39 15 3 0.0537537
+tree-21.dat -TDPLP tree 40 39 5 10 0.00997642
+tree-22.dat -TDPLP tree 40 39 10 4 0.0212868
+tree-23.dat -TDPLP tree 40 39 15 3 0.0533726
+tree-24.dat -TDPLP tree 40 39 5 10 0.00830388
+tree-25.dat -TDPLP tree 40 39 10 5 0.0160029
+tree-26.dat -TDPLP tree 40 39 15 2 0.0539919
+tree-27.dat -TDPLP tree 40 39 5 11 0.0111338
+tree-28.dat -TDPLP tree 40 39 10 6 0.0207937
+tree-29.dat -TDPLP tree 40 39 15 3 0.0591799
+tree-30.dat -TDPLP tree 60 59 6 11 0.0155297
+tree-31.dat -TDPLP tree 60 59 12 5 0.0622928
+tree-32.dat -TDPLP tree 60 59 18 3 0.124988
+tree-33.dat -TDPLP tree 60 59 6 13 0.021833
+tree-34.dat -TDPLP tree 60 59 12 6 0.0823455
+tree-35.dat -TDPLP tree 60 59 18 3 0.138399
+tree-36.dat -TDPLP tree 60 59 6 12 0.0209879
+tree-37.dat -TDPLP tree 60 59 12 6 0.0570967
+tree-38.dat -TDPLP tree 60 59 18 4 0.129725
+tree-39.dat -TDPLP tree 60 59 6 12 0.0185988
+tree-40.dat -TDPLP tree 60 59 12 6 0.0668295
+tree-41.dat -TDPLP tree 60 59 18 4 0.135433
+tree-42.dat -TDPLP tree 60 59 6 13 0.0168685
+tree-43.dat -TDPLP tree 60 59 12 6 0.069286
+tree-44.dat -TDPLP tree 60 59 18 4 0.1509
+tree-45.dat -TDPLP tree 80 79 10 10 0.0688263
+tree-46.dat -TDPLP tree 80 79 18 5 0.185805
+tree-47.dat -TDPLP tree 80 79 25 4 0.288357
+tree-48.dat -TDPLP tree 80 79 10 9 0.0667913
+tree-49.dat -TDPLP tree 80 79 16 6 0.143355
+tree-50.dat -TDPLP tree 80 79 25 3 0.360319
+tree-51.dat -TDPLP tree 80 79 10 9 0.0625854
+tree-52.dat -TDPLP tree 80 79 16 6 0.16914
+tree-53.dat -TDPLP tree 80 79 25 4 0.374144
+tree-54.dat -TDPLP tree 80 79 10 10 0.0640916
+tree-55.dat -TDPLP tree 80 79 16 5 0.147046
+tree-56.dat -TDPLP tree 80 79 25 5 0.291642
+tree-57.dat -TDPLP tree 80 79 10 10 0.0531726
+tree-58.dat -TDPLP tree 80 79 16 6 0.169485
+tree-59.dat -TDPLP tree 80 79 25 3 0.330131
+tree-60.dat -TDPLP tree 100 99 10 13 0.0746046
+tree-61.dat -TDPLP tree 100 99 20 5 0.260746
+tree-62.dat -TDPLP tree 100 99 30 4 0.507993
+tree-63.dat -TDPLP tree 100 99 10 12 0.0668347
+tree-64.dat -TDPLP tree 100 99 20 6 0.267647
+tree-65.dat -TDPLP tree 100 99 30 3 0.441845
+tree-66.dat -TDPLP tree 100 99 10 12 0.0973898
+tree-67.dat -TDPLP tree 100 99 20 6 0.296794
+tree-68.dat -TDPLP tree 100 99 30 4 0.614542
+tree-69.dat -TDPLP tree 100 99 10 12 0.097123
+tree-70.dat -TDPLP tree 100 99 20 5 0.263306
+tree-71.dat -TDPLP tree 100 99 30 4 0.531328
+tree-72.dat -TDPLP tree 100 99 10 14 0.0671707
+tree-73.dat -TDPLP tree 100 99 20 6 0.276506
+tree-74.dat -TDPLP tree 100 99 30 5 0.557931
+tree-0.dat -TDPBLP tree 20 19 3 8 0.0382606 28 0.010491
+tree-1.dat -TDPBLP tree 20 19 6 3 0.0296117 9 0.0244891
+tree-2.dat -TDPBLP tree 20 19 9 2 0.0703894 16 0.0650722
+tree-3.dat -TDPBLP tree 20 19 3 7 0.0119675 18 0.00839794
+tree-4.dat -TDPBLP tree 20 19 6 4 0.0510165 23 0.0470614
+tree-5.dat -TDPBLP tree 20 19 9 2 0.0527188 12 0.0464192
+tree-6.dat -TDPBLP tree 20 19 3 8 0.0145311 20 0.00989113
+tree-7.dat -TDPBLP tree 20 19 6 4 0.0464734 22 0.0415123
+tree-8.dat -TDPBLP tree 20 19 9 2 0.0532121 12 0.0462817
+tree-9.dat -TDPBLP tree 20 19 3 7 0.0131138 19 0.00962807
+tree-10.dat -TDPBLP tree 20 19 6 4 0.0207463 10 0.0168453
+tree-11.dat -TDPBLP tree 20 19 9 2 0.0216038 3 0.0160837
+tree-12.dat -TDPBLP tree 20 19 3 7 0.0130048 15 0.00977214
+tree-13.dat -TDPBLP tree 20 19 6 4 0.0368553 21 0.0327476
+tree-14.dat -TDPBLP tree 20 19 9 2 0.0585803 14 0.0521849
+tree-15.dat -TDPBLP tree 40 39 5 11 0.610803 190 0.606229
+tree-16.dat -TDPBLP tree 40 39 10 4 0.48223 38 0.475057
+tree-17.dat -TDPBLP tree 40 39 15 3 0.902537 21 0.877408
+tree-18.dat -TDPBLP tree 40 39 5 11 0.393779 134 0.377188
+tree-19.dat -TDPBLP tree 40 39 10 5 1.00487 92 0.95762
+tree-20.dat -TDPBLP tree 40 39 15 3 2.08921 81 2.07391
+tree-21.dat -TDPBLP tree 40 39 5 10 0.209718 80 0.1944
+tree-22.dat -TDPBLP tree 40 39 10 4 0.312087 31 0.292916
+tree-23.dat -TDPBLP tree 40 39 15 3 1.66357 55 1.64034
+tree-24.dat -TDPBLP tree 40 39 5 10 0.250727 73 0.232563
+tree-25.dat -TDPBLP tree 40 39 10 5 0.836677 74 0.819221
+tree-26.dat -TDPBLP tree 40 39 15 2 0.798694 7 0.774683
+tree-27.dat -TDPBLP tree 40 39 5 11 0.393026 120 0.364276
+tree-28.dat -TDPBLP tree 40 39 10 6 3.80791 344 3.78789
+tree-29.dat -TDPBLP tree 40 39 15 3 2.54559 121 2.5247
+tree-30.dat -TDPBLP tree 60 59 6 11 0.703589 94 0.663534
+tree-31.dat -TDPBLP tree 60 59 12 5 2.69492 83 2.65944
+tree-32.dat -TDPBLP tree 60 59 18 3 8.30304 55 8.26023
+tree-33.dat -TDPBLP tree 60 59 6 13 1.21618 181 1.18477
+tree-34.dat -TDPBLP tree 60 59 12 6 6.97565 191 6.95057
+tree-35.dat -TDPBLP tree 60 59 18 3 8.4429 87 8.40066
+tree-36.dat -TDPBLP tree 60 59 6 12 0.39045 68 0.371416
+tree-37.dat -TDPBLP tree 60 59 12 6 6.47509 144 6.4485
+tree-38.dat -TDPBLP tree 60 59 18 4 13.6694 134 13.6275

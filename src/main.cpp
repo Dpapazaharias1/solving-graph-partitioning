@@ -41,7 +41,7 @@ int main(int argc, char *argv[])
                 std::cout << "Missing arguments for FLOW+ formulation" << std::endl;
                 std::cout << "argv[5]: p - probability of generating a user cut at a node" << std::endl;
                 std::cout << "argv[6]: r_pct - For knap and tdp cuts; Target weight of the trees to generate cuts" << std::endl;
-                std::cout << "argv[7]: cut_type - Fractional separation routine. Options: -prim, -flow, -tdp" << std::endl;
+                std::cout << "argv[7]: cut_type - Fractional separation routine. Options: -prim, -knap, -tdp" << std::endl;
             }
             else {
                 int p = std::stoi(argv[5]);

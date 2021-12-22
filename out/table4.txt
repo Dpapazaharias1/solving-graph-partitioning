@@ -1,0 +1,5 @@
+Instance Formulation graph_type n m r best_obj mip_gap runtime cut_type num_lazy_cuts lazy_separation_time
+series-parallel-0.dat -BLOCKIP series-parallel 28 40 5 15 0 0.440806 -block 426 0.00656448
+series-parallel-1.dat -BLOCKIP series-parallel 28 40 10 8 0 1.10016 -block 905 0.016575
+series-parallel-2.dat -BLOCKIP series-parallel 28 40 15 5 0 0.853278 -block 985 0.0218798
+series-parallel-5.dat -BLOCKIP series-parallel 30 45 5 20 0 6.03572 -block 2003 0.0370147

@@ -1,45 +1,82 @@
-# Local Path
-SRCPATH	  = ./src/
-BINPATH	  = ./bin/
-INCPATH	  = ./include/
+#-----------------------------------------------------------------------------
+# Main Program
+#-----------------------------------------------------------------------------
 
-# Mac Path
+SRCPATH	        = ./src/
+BINPATH	        = ./bin/
+OBJPATH	        = ./obj/
+RUNPATH         = ./run/
+OUTPATH         = ./out/
+GRBPATH         = /opt/gurobi911/linux64
+GRBLIB          = $(GRBPATH)/lib/
+GRBINC          = $(GRBPATH)/include/
+MAINOBJFILES	= $(addprefix $(OBJPATH),$(OBJ))
 
-MACPATH   = /Library/gurobi901/mac64
-INCMAC    = $(MACPATH)/include/
-INCSPDLOG = /usr/local/Cellar/spdlog/include/
-CPPLIBMAC = -L$(MACPATH)/lib/ -lgurobi_c++ -lgurobi90 $(CPPSTDLIB) -lpthread -lm
+OBJ             =  main.o \
+                   Graph.o \
+	           Formulation.o \
+		   MinHeap.o \
+		   GRBSeparation.o
 
-# Linux Path
-#GRBPATH   = /opt/gurobi911/linux64
+#-----------------------------------------------------------------------------
+# Flagss
+#-----------------------------------------------------------------------------
+CXX            = g++
+CXXFLAGS       = -std=c++17 -O3 -I$(GRBINC)
+GRBFLAGS       = -L$(GRBLIB) -lgurobi_g++5.2 -lgurobi91 $(CPPSTDLIB) -lpthread -lm 
 
-GRBPATH   = /util/academic/gurobi/gurobi911/linux64/
-INCGRB    = $(GRBPATH)/include/
-CPPLIBGRB = -L$(GRBPATH)/lib/ -lgurobi_g++5.2 -lgurobi91 $(CPPSTDLIB) -lpthread -lm
+#-----------------------------------------------------------------------------
+# Rules
+#-----------------------------------------------------------------------------
 
-# C++ Compiler and Flags
-CXX=g++
-
-# MacOS Flags
-# CXXFLAGS= -m64 -std=c++17 -O3 -Iinclude/ -I$(INCMAC) 
-
-# Linux Flags
-CXXFLAGS=-std=c++17 -O3 -Iinclude/ -I$(INCSPDLOG) -I$(INCGRB) $(CPPLIBGRB)
+main: $(BINPATH) $(OBJPATH) $(MAINOBJFILES)
+	@echo "-> linking $@"
+	$(CXX) $(MAINOBJFILES) -o $(BINPATH)$@ $(GRBFLAGS)
 
 
-main: main.o Graph.o Formulation.o MinHeap.o GRBSeparation.o
-	$(CXX) $(CXXFLAGS) -o $(BINPATH)main main.o Graph.o Formulation.o MinHeap.o GRBSeparation.o $(CPPLIBGRB)
-main.o: 
-	$(CXX) $(CXXFLAGS) -c $(SRCPATH)main.cpp 
-Graph.o:
-	$(CXX) $(CXXFLAGS) -c $(SRCPATH)Graph.cpp
-Formulation.o:
-	$(CXX) $(CXXFLAGS) -c $(SRCPATH)Formulation.cpp
-MinHeap.o:
-	$(CXX) $(CXXFLAGS) -c $(SRCPATH)MinHeap.cpp
-GRBSeparation.o:
-	$(CXX) $(CXXFLAGS) -c $(SRCPATH)GRBSeparation.cpp
-#TreeSeparation.o:
-#	$(CXX) $(CXXFLAGS) -c $(SRCPATH)TreeSeparation.cpp
+$(OBJPATH)%.o:	$(SRCPATH)%.cpp 
+	@echo "-> compiling $@"
+	$(CXX) $(CXXFLAGS) -c -o $@ $< 
+
+$(OBJPATH):
+	@-mkdir -p $(OBJPATH)
+
+$(BINPATH):
+	@-mkdir -p $(BINPATH)
+
+run_all: table2 table3 table4 table5-6 table7-8 table9 table10
+
+table2:
+	@echo "-> running instances for table 2"
+	@bash $(RUNPATH)table2.sh
+
+table3:
+	@echo "-> running instances for table 3"
+	@bash $(RUNPATH)table3.sh
+
+
+table4:
+	@echo "-> running instances for table 4"
+	@bash $(RUNPATH)table4.sh
+
+table5-6:
+	@echo "-> running instances for tables 5 and 6"
+	@bash $(RUNPATH)table5-6.sh
+
+table7-8:
+	@echo "-> running instances for tables 7 and 8"
+	@bash $(RUNPATH)table7-8.sh
+
+table9:
+	@echo "-> running instances for table 9"
+	@bash $(RUNPATH)table9.sh
+
+table10:
+	@echo "-> running instances for table 10"
+	@bash $(RUNPATH)table10.sh
+
+clean_out:
+	rm $(OUTPATH)*.txt
+
 clean:
-	rm -rf *.o ./bin/main
+	rm -rf  $(BINPATH)main $(OBJPATH)*.o

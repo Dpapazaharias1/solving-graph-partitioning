@@ -1,0 +1,72 @@
+-TRI graph_name n m r best_obj mip_gap runtime b&b nodes
+-FLOW graph_name n m r best_obj mip_gap runtime b&b_nodes cut_type prob_cut r_pct_trees_cut num_cuts separation_time
+-PATH graph_name n m r best_obj mip_gap runtime b&b_nodes num_lazy num_user lazy_time user_time -tree_cut_type(not used)
+-FLOW+ graph_name n m r best_obj mip_gap runtime b&b_nodes cut_type prob_cut r_pct_trees_cut num_cuts separation_time
+series-parallel-0.dat -TRI series-parallel 28 40 2613 5625 0 0.235074 1
+series-parallel-0.dat -FLOW series-parallel 28 40 2613 5625 0 0.0899019 1 -none 0 0 0 0
+series-parallel-0.dat -PATH series-parallel 28 40 2613 5625 0 0.0619988 23 190 441 0.000778712 0.0022075 -path 0 0
+series-parallel-0.dat -FLOW+ series-parallel 28 40 2613 5625 0 0.095943 111 -prim 50 1 0 0.000410601
+series-parallel-1.dat -TRI series-parallel 28 40 5227 2209 0 0.0635469 1
+series-parallel-1.dat -FLOW series-parallel 28 40 5227 2209 0 0.0252891 1 -none 0 0 0 0
+series-parallel-1.dat -PATH series-parallel 28 40 5227 2209 0 0.0316999 1 447 568 0.000797889 0.00107582 -path 0 0
+series-parallel-1.dat -FLOW+ series-parallel 28 40 5227 2209 0 0.0259991 1 -prim 50 1 0 0
+series-parallel-2.dat -TRI series-parallel 28 40 7841 1047 0 0.168545 1
+series-parallel-2.dat -FLOW series-parallel 28 40 7841 1047 0 0.0747721 1 -none 0 0 0 0
+series-parallel-2.dat -PATH series-parallel 28 40 7841 1047 0 0.021611 1 377 123 0.000868967 0.000340993 -path 0 0
+series-parallel-2.dat -FLOW+ series-parallel 28 40 7841 1047 0 0.065094 1 -prim 50 1 0 2.263e-05
+series-parallel-3.dat -TRI series-parallel 28 40 10455 624 0 0.215055 1
+series-parallel-3.dat -FLOW series-parallel 28 40 10455 624 0 0.0542469 1 -none 0 0 0 0
+series-parallel-3.dat -PATH series-parallel 28 40 10455 624 0 0.0666869 1 357 534 0.000744093 0.00202848 -path 0 0
+series-parallel-3.dat -FLOW+ series-parallel 28 40 10455 624 0 0.073266 1 -prim 50 1 1 0.000117935
+series-parallel-4.dat -TRI series-parallel 28 40 13069 371 0 0.237341 1
+series-parallel-4.dat -FLOW series-parallel 28 40 13069 371 0 0.059031 1 -none 0 0 0 0
+series-parallel-4.dat -PATH series-parallel 28 40 13069 371 0 0.0474761 1 434 404 0.00109611 0.00147869 -path 0 0
+series-parallel-4.dat -FLOW+ series-parallel 28 40 13069 371 0 0.055768 1 -prim 50 1 1 9.9141e-05
+series-parallel-5.dat -TRI series-parallel 30 45 2473 9322 0 0.218306 1
+series-parallel-5.dat -FLOW series-parallel 30 45 2473 9322 0 0.0915751 1 -none 0 0 0 0
+series-parallel-5.dat -PATH series-parallel 30 45 2473 9322 0 0.0576081 17 345 695 0.000968134 0.00219646 -path 0 0
+series-parallel-5.dat -FLOW+ series-parallel 30 45 2473 9322 0 0.134708 6 -prim 50 1 0 0.000252305
+series-parallel-6.dat -TRI series-parallel 30 45 4947 5429 0 0.294287 1
+series-parallel-6.dat -FLOW series-parallel 30 45 4947 5429 0 0.0778019 1 -none 0 0 0 0
+series-parallel-6.dat -PATH series-parallel 30 45 4947 5429 0 0.0714378 1 618 818 0.00152075 0.0019084 -path 0 0
+series-parallel-6.dat -FLOW+ series-parallel 30 45 4947 5429 0 0.0707061 1 -prim 50 1 0 2.9835e-05
+series-parallel-7.dat -TRI series-parallel 30 45 7421 3254 0 0.908851 1
+series-parallel-7.dat -FLOW series-parallel 30 45 7421 3254 0 0.103993 1 -none 0 0 0 0
+series-parallel-7.dat -PATH series-parallel 30 45 7421 3254 0 0.120265 1 466 963 0.00123243 0.00227745 -path 0 0
+series-parallel-7.dat -FLOW+ series-parallel 30 45 7421 3254 0 0.104947 26 -prim 50 1 0 0.00052731
+series-parallel-8.dat -TRI series-parallel 30 45 9894 1998 0 1.11899 1
+series-parallel-8.dat -FLOW series-parallel 30 45 9894 1998 0 0.10872 1 -none 0 0 0 0
+series-parallel-8.dat -PATH series-parallel 30 45 9894 1998 0 0.079272 24 418 446 0.000945423 0.00200997 -path 0 0
+series-parallel-8.dat -FLOW+ series-parallel 30 45 9894 1998 0 0.101535 10 -prim 50 1 6 0.000634667
+series-parallel-9.dat -TRI series-parallel 30 45 12368 869 0 0.281242 1
+series-parallel-9.dat -FLOW series-parallel 30 45 12368 869 0 0.0632889 1 -none 0 0 0 0
+series-parallel-9.dat -PATH series-parallel 30 45 12368 869 0 0.067169 1 446 449 0.00159298 0.00206914 -path 0 0
+series-parallel-9.dat -FLOW+ series-parallel 30 45 12368 869 0 0.073175 1 -prim 50 1 0 4.5622e-05
+series-parallel-10.dat -TRI series-parallel 35 50 2389 6881 0 0.615255 1
+series-parallel-10.dat -FLOW series-parallel 35 50 2389 6881 0 0.185835 1 -none 0 0 0 0
+series-parallel-10.dat -PATH series-parallel 35 50 2389 6881 0 0.0918109 12 364 659 0.00210323 0.00298944 -path 0 0
+series-parallel-10.dat -FLOW+ series-parallel 35 50 2389 6881 0 0.290185 212 -prim 50 1 0 0.00178726
+series-parallel-11.dat -TRI series-parallel 35 50 4779 2917 0 2.89265 22
+series-parallel-11.dat -FLOW series-parallel 35 50 4779 2917 0 0.275275 1 -none 0 0 0 0
+series-parallel-11.dat -PATH series-parallel 35 50 4779 2917 0 0.353202 285 860 9788 0.00319818 0.030696 -path 0 0
+series-parallel-11.dat -FLOW+ series-parallel 35 50 4779 2917 0 0.165588 47 -prim 50 1 10 0.000767857
+series-parallel-12.dat -TRI series-parallel 35 50 7168 980 0 0.765621 1
+series-parallel-12.dat -FLOW series-parallel 35 50 7168 980 0 0.123256 1 -none 0 0 0 0
+series-parallel-12.dat -PATH series-parallel 35 50 7168 980 0 0.064086 1 609 623 0.00249682 0.00154299 -path 0 0
+series-parallel-12.dat -FLOW+ series-parallel 35 50 7168 980 0 0.113428 1 -prim 50 1 1 3.4002e-05
+series-parallel-13.dat -TRI series-parallel 35 50 9558 807 0 2.60702 1
+series-parallel-13.dat -FLOW series-parallel 35 50 9558 807 0 0.127065 1 -none 0 0 0 0
+series-parallel-13.dat -PATH series-parallel 35 50 9558 807 0 0.20934 1 885 1529 0.00224208 0.00433305 -path 0 0
+series-parallel-13.dat -FLOW+ series-parallel 35 50 9558 807 0 0.138518 1 -prim 50 1 2 0.000283794
+series-parallel-14.dat -TRI series-parallel 35 50 11947 662 0 3.097 1
+series-parallel-14.dat -FLOW series-parallel 35 50 11947 662 0 0.092123 1 -none 0 0 0 0
+series-parallel-14.dat -PATH series-parallel 35 50 11947 662 0 0.103982 31 1238 1248 0.00290831 0.00393614 -path 0 0
+series-parallel-14.dat -FLOW+ series-parallel 35 50 11947 662 0 0.111348 8 -prim 50 1 2 0.000319147
+series-parallel-15.dat -TRI series-parallel 35 50 14337 453 0 0.424334 1
+series-parallel-15.dat -FLOW series-parallel 35 50 14337 453 0 0.133835 1 -none 0 0 0 0
+series-parallel-15.dat -PATH series-parallel 35 50 14337 453 0 0.129312 29 1189 2291 0.00287799 0.00629452 -path 0 0
+series-parallel-15.dat -FLOW+ series-parallel 35 50 14337 453 0 0.134051 11 -prim 50 1 3 0.000423225
+series-parallel-16.dat -TRI series-parallel 44 60 2243 6958 0 2.6606 1
+series-parallel-16.dat -FLOW series-parallel 44 60 2243 6958 0 0.312283 1 -none 0 0 0 0
+series-parallel-16.dat -PATH series-parallel 44 60 2243 6958 0 0.142997 142 803 3538 0.00310153 0.0180219 -path 0 0
+series-parallel-16.dat -FLOW+ series-parallel 44 60 2243 6958 0 0.285579 72 -prim 50 1 0 0.000889733
