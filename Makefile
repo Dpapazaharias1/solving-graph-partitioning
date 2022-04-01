@@ -7,7 +7,7 @@ BINPATH	        = ./bin/
 OBJPATH	        = ./obj/
 RUNPATH         = ./run/
 OUTPATH         = ./out/
-GRBPATH         = /Library/gurobi911/mac64
+GRBPATH         = /Library/gurobi911/linux64
 GRBLIB          = $(GRBPATH)/lib/
 GRBINC          = $(GRBPATH)/include/
 MAINOBJFILES	= $(addprefix $(OBJPATH),$(OBJ))
@@ -23,7 +23,7 @@ OBJ             =  main.o \
 #-----------------------------------------------------------------------------
 CXX            = g++
 CXXFLAGS       = -std=c++17 -O3 -I$(GRBINC)
-GRBFLAGS       = -L$(GRBLIB) -lgurobi_g++4.2 -lgurobi91 $(CPPSTDLIB) -lpthread -lm 
+GRBFLAGS       = -L$(GRBLIB) -lgurobi_g++5.2 -lgurobi91 $(CPPSTDLIB) -lpthread -lm 
 
 #-----------------------------------------------------------------------------
 # Rules
