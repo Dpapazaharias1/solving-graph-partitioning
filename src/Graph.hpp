@@ -63,10 +63,10 @@ public:
  * @param[in] cost : cost of SP to each node from s.
  */
       void SP(
-          std::vector<double> CostTo,
+          const std::vector<double> &CostTo,
           int s,
-          int *parent,
-          double *cost);
+          std::vector<int> &parent,
+          std::vector<double> &cost);
 
       /**
  * Prim: Find a minimum cost cover tree of size r + 1 starting from root s 
@@ -79,12 +79,13 @@ public:
  * 
  **/
 
-      std::vector<int> Prim(
-          std::vector<double> CostTo,
+     void Prim(
+          const std::vector<double> &CostTo,
           int s,
           int r,
-          int *parent,
-          double *cost);
+          std::vector<int> &parent,
+          std::vector<double> &cost,
+          std::vector<int> &treeNodes);
 
       /**
  * Prints the full description of the graph:

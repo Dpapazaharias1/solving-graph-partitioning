@@ -16,6 +16,7 @@ int main(int argc, char *argv[])
         std::cout << "Depending on formulation selected, addition arguments may be required." << std::endl;
     }
     else {
+        
         const char *filetype = argv[1];
         const char *weighted = argv[2];
         const char *filename = argv[3];

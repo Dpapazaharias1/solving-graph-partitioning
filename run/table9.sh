@@ -9,10 +9,12 @@ if test -f "./out/$table.txt"; then
 fi
 # Table 9: Formulation strength of IP formulations on special graph structures
 
-echo "Instance -TRI graph_name n m r best_obj mip_gap runtime b&b nodes" >> ./out/$table.txt
-echo "Instance -FLOW graph_name n m r best_obj mip_gap runtime b&b_nodes cut_type prob_cut r_pct_trees_cut num_cuts separation_time" >> ./out/$table.txt
-echo "Instance -PATH graph_name n m r best_obj mip_gap runtime b&b_nodes num_lazy num_user lazy_time user_time -tree_cut_type(not used)" >> ./out/$table.txt
-echo "Instance -FLOW+ graph_name n m r best_obj mip_gap runtime b&b_nodes cut_type prob_cut r_pct_trees_cut num_cuts separation_time" >> ./out/$table.txt
+#echo "Instance -TRI graph_name n m r best_obj mip_gap runtime b&b nodes" >> ./out/$table.txt
+#echo "Instance -FLOW graph_name n m r best_obj mip_gap runtime b&b_nodes cut_type prob_cut r_pct_trees_cut num_cuts separation_time" >> ./out/$table.txt
+#echo "Instance -PATH graph_name n m r best_obj mip_gap runtime b&b_nodes num_lazy num_user lazy_time user_time -tree_cut_type(not used)" >> ./out/$table.txt
+#echo "Instance -FLOW+ graph_name n m r best_obj mip_gap runtime b&b_nodes cut_type prob_cut r_pct_trees_cut num_cuts separation_time" >> ./out/$table.txt
+
+echo "Instance Formulation Graph_type n m r best_obj mip_gap runtime b&b_nodes cut_type prob_cut r_pct_trees_cut num_cuts separation_time x x" >> ./out/$table.txt
 
 for ft in "${fts[@]}";
 do

@@ -6,36 +6,40 @@
 #include <numeric>
 #include <cstring>
 
-void triangle(const Graph &G, bool is_integer)
+
+void variable_setup(const Graph &G, GRBModel &model, std::vector<GRBVar> &x, std::vector<GRBVar> &y)
 {
     try
     {
-        GRBEnv *env = new GRBEnv();
-        GRBModel model = GRBModel(*env);
-
-        GRBVar *x = model.addVars(G.n * G.n, GRB_CONTINUOUS);
-        GRBVar *y = model.addVars(2 * G.m, GRB_CONTINUOUS);
         std::cout << "xvars.." << std::endl;
-        for(int i = 0; i < G.n; ++i)
+        for(int i = 0; i < G.n; i++) 
         {
-            for(int j = 0; j < G.n; ++j)
+            x[(i * G.n) + i] = model.addVar(0.0, 0.0, 0.0, GRB_CONTINUOUS);
+            for(int j = i + 1; j < G.n; j++) 
             {
-                if(i == j){ x[(i * G.n) + j].set(GRB_DoubleAttr_UB, 0.0); }
-                if(i < j) { x[(j * G.n) + i] = x[(i * G.n) + j]; }
+                x[(i * G.n) + j] = model.addVar(0.0, 1.0, 0.0, GRB_CONTINUOUS);
+                x[(j * G.n) + i] = x[(i * G.n) + j];
             }
         }
+
         std::cout << "yvars.." << std::endl;
-        for(int m = 0; m < 2 * G.m; ++m)
+
+        for(int m = 0; m < 2 * G.m; m++)
         {
-            y[m].set(GRB_DoubleAttr_Obj, G.EdgeCost[m]);
-            if(is_integer) {y[m].set(GRB_CharAttr_VType, GRB_BINARY);}
+            y[m] = model.addVar(0.0, 1.0, G.EdgeCost[m], GRB_CONTINUOUS);
         }
 
-        for (int i = 0; i < G.n; i++){
-            for (int k = G.EdgesBegin[i]; k < G.EdgesBegin[i] + G.Degree[i]; k++){
+        std::cout << "linking y" << std::endl;
+
+        for(int i = 0; i < G.n; i++)
+        {
+            for (int k = G.EdgesBegin[i]; k < G.EdgesBegin[i] + G.Degree[i]; k++)
+            {
                 int j = G.EdgeTo[k];
-                if (i < j){
-                    for (int l = G.EdgesBegin[j]; l < G.EdgesBegin[j] + G.Degree[j]; l++){
+                if (i < j)
+                {
+                    for (int l = G.EdgesBegin[j]; l < G.EdgesBegin[j] + G.Degree[j]; l++)
+                    {
                         if (i == G.EdgeTo[l]){ y[l] = y[k]; }
                     }
                 }
@@ -43,10 +47,36 @@ void triangle(const Graph &G, bool is_integer)
         }
 
         model.set(GRB_IntAttr_ModelSense, 1);
-        model.set(GRB_IntParam_OutputFlag, 0);
+        model.set(GRB_IntParam_OutputFlag, 1);
         model.set(GRB_DoubleParam_TimeLimit, 7200);
         model.update();
-        std::cout << "constr1.." << std::endl;
+    }
+
+    catch (GRBException e)
+    {
+        std::cout << "Error number: " << e.getErrorCode() << std::endl;
+        std::cout << e.getMessage() << std::endl;
+    }
+
+    catch(const std::exception& e)
+    {
+        std::cerr << e.what() << '\n';
+    }
+    
+}
+
+void triangle(const Graph &G, bool is_integer)
+{
+    try
+    {
+        GRBEnv env = GRBEnv();
+        GRBModel model = GRBModel(env);
+
+        std::vector<GRBVar> x (G.n * G.n);
+        std::vector<GRBVar> y (2 * G.m);
+        
+        variable_setup(G, model, x, y);
+
         for(int i = 0; i < G.n; ++i)
         {
             for(int k = G.EdgesBegin[i]; k < G.EdgesBegin[i] + G.Degree[i]; ++k)
@@ -54,16 +84,17 @@ void triangle(const Graph &G, bool is_integer)
                 int j = G.EdgeTo[k];
                 if(i < j)
                 {
-                    if (is_integer) {
-                        x[(i * G.n) + j].set(GRB_CharAttr_VType, GRB_BINARY);
-                        x[(j * G.n) + i].set(GRB_CharAttr_VType, GRB_BINARY);
-                    }
                     model.addConstr(y[k], GRB_EQUAL, 1 - x[(i * G.n) + j]);
                     model.addConstr(y[k], GRB_EQUAL, 1 - x[(j * G.n) + i]);
                 }
+                if(i < j && is_integer)
+                {
+                    x[(i * G.n) + j].set(GRB_CharAttr_VType, GRB_BINARY);
+                    x[(j * G.n) + i].set(GRB_CharAttr_VType, GRB_BINARY);
+                }
             }
-        }
-        std::cout << "constr2.." << std::endl;
+        } // Link x,y variables
+
         for(int i = 0; i < G.n; ++i)
         {
             for(int j = i + 1; j < G.n; ++j)
@@ -75,7 +106,8 @@ void triangle(const Graph &G, bool is_integer)
                     model.addConstr(-x[(i * G.n) + j] + x[(i * G.n) + k] + x[(j * G.n) + k], GRB_LESS_EQUAL, 1.0);
                 }
             }
-        }
+        } // Triangle Inequalities
+
         GRBLinExpr constr;
         for(int i = 0; i < G.n; ++i)
         {
@@ -85,6 +117,24 @@ void triangle(const Graph &G, bool is_integer)
                 constr += G.Weight[j] * x[(i * G.n) + j];
             }
             model.addConstr(constr, GRB_LESS_EQUAL, G.r - G.Weight[i]);
+        } // Knapsack Constraints
+
+        
+
+        if(!is_integer)
+        {
+            for(int i = 0; i < G.n; ++i)
+            {
+                for(int k = G.EdgesBegin[i]; k < G.EdgesBegin[i] + G.Degree[i]; ++k)
+                {
+                    int j = G.EdgeTo[k];
+                    if(i < j)
+                    {
+                        x[(i * G.n) + j].set(GRB_CharAttr_VType, GRB_CONTINUOUS);
+                        x[(j * G.n) + i].set(GRB_CharAttr_VType, GRB_CONTINUOUS);
+                    }
+                }
+            }
         }
 
         model.optimize();
@@ -114,49 +164,17 @@ void flow(Graph &G, int p, float r_pct, const char* cut_type)
 {
     try
     {
-        GRBEnv *env = new GRBEnv();
-        GRBModel model = GRBModel(*env);
+        GRBEnv env = GRBEnv();
+        GRBModel model = GRBModel(env);
 
-        GRBVar *x = model.addVars(G.n * G.n, GRB_CONTINUOUS);
-        GRBVar *y = model.addVars(2 * G.m, GRB_BINARY);
-        std::cout << "xvars.." << std::endl;
-        for(int i = 0; i < G.n; ++i)
-        {
-            for(int j = 0; j < G.n; ++j)
-            {
-                if(i == j)
-                {
-                    x[(i * G.n) + j].set(GRB_DoubleAttr_UB, 0.0);
-                }
-                if(i < j)
-                {
-                    x[(j * G.n) + i] = x[(i * G.n) + j];
-                }
-            }
-        }
-        std::cout << "yvars.." << std::endl;
-        for(int m = 0; m < 2 * G.m; ++m)
-        {
-            y[m].set(GRB_DoubleAttr_Obj, G.EdgeCost[m]); // TODO: Make it work for general costs~[1, 1000]
-            
-        }
+        std::vector<GRBVar> x (G.n * G.n);
+        std::vector<GRBVar> y (2 * G.m);
+        
+        std::cout << "setting up vars.." << std::endl;
 
-        for (int i = 0; i < G.n; i++){
-            for (int k = G.EdgesBegin[i]; k < G.EdgesBegin[i] + G.Degree[i]; k++){
-                int j = G.EdgeTo[k];
-                if (i < j){
-                    for (int l = G.EdgesBegin[j]; l < G.EdgesBegin[j] + G.Degree[j]; l++){
-                        if (i == G.EdgeTo[l]){ y[l] = y[k]; }
-                    }
-                }
-            }
-        }
+        variable_setup(G, model, x, y);
 
-        model.set(GRB_IntAttr_ModelSense, 1);
-        model.set(GRB_IntParam_OutputFlag, 0);
-        model.set(GRB_DoubleParam_TimeLimit, 7200);
-        model.update();
-        std::cout << "constr1.." << std::endl;
+
         for(int i = 0; i < G.n; ++i)
         {
             for(int k = G.EdgesBegin[i]; k < G.EdgesBegin[i] + G.Degree[i]; ++k)
@@ -164,14 +182,14 @@ void flow(Graph &G, int p, float r_pct, const char* cut_type)
                 int j = G.EdgeTo[k];
                 if(i < j)
                 {
-                    x[(i * G.n) + j].set(GRB_CharAttr_VType, GRB_BINARY);
-                    x[(j * G.n) + i].set(GRB_CharAttr_VType, GRB_BINARY);
                     model.addConstr(y[k], GRB_EQUAL, 1 - x[(i * G.n) + j]);
                     model.addConstr(y[k], GRB_EQUAL, 1 - x[(j * G.n) + i]);
+                    x[(i * G.n) + j].set(GRB_CharAttr_VType, GRB_BINARY);
+                    x[(j * G.n) + i].set(GRB_CharAttr_VType, GRB_BINARY);
                 }
             }
-        }
-        std::cout << "constr2.." << std::endl;
+        } // Link x,y variables
+        
         for(int i = 0; i < G.n; ++i){
             for(int q = G.EdgesBegin[i]; q < G.EdgesBegin[i] + G.Degree[i]; q++){
                 int j = G.EdgeTo[q];
@@ -187,6 +205,17 @@ void flow(Graph &G, int p, float r_pct, const char* cut_type)
         }
 
         GRBLinExpr constr;
+        for(int i = 0; i < G.n; ++i)
+        {
+            constr = 0;
+            for(int j = 0; j < G.n; ++j)
+            {
+                constr += G.Weight[j] * x[(i * G.n) + j];
+            }
+            model.addConstr(constr, GRB_LESS_EQUAL, G.r - G.Weight[i]);
+        } // Knapsack Constraints
+
+        constr = 0;
         for(int i = 0; i < G.n; ++i)
         {
             constr = 0;
@@ -230,59 +259,28 @@ void flow(Graph &G, int p, float r_pct, const char* cut_type)
 }
 
 
+
 void path(Graph &G, int p, float r_pct, const char* cut_type)
 {
-    GRBEnv *env = new GRBEnv();
-    GRBModel model = GRBModel(*env);
+    GRBEnv env = GRBEnv();
+    GRBModel model = GRBModel(env);
 
-    GRBVar *y = new GRBVar[2 * G.m];
-    GRBVar *x = new GRBVar[G.n * G.n];
-
-    int j;
-
-    std::string varName;
-
-    for (int i = 0; i < G.n; i++) {
-        for (int k = G.EdgesBegin[i]; k < G.EdgesBegin[i] + G.Degree[i]; k++) {
-            j = G.EdgeTo[k];
-            if (i < j) {
-                varName = varName = "y_" + std::to_string(i) + "," + std::to_string(j);
-                y[k] = model.addVar(0.0, 1.0, G.EdgeCost[k], GRB_BINARY, varName);
-                for (int l = G.EdgesBegin[j]; l < G.EdgesBegin[j] + G.Degree[j]; l++) {
-                    if (i == G.EdgeTo[l]) { y[l] = y[k]; }
-                }
-            }
-        }
-    }
-
-    // -------- y_i,j ---------
-
-    for (int i = 0; i < G.n; i++)
-    {
-        for (int j = i + 1; j < G.n; j++)
-        {
-            varName = "x_" + std::to_string(i) + "," + std::to_string(j);
-            x[(i * G.n) + j] = model.addVar(0.0, 1.0, 0.0, GRB_CONTINUOUS, varName);
-            x[(j * G.n) + i] = x[(i * G.n) + j];
-        }
-        varName = "x_" + std::to_string(i) + "," + std::to_string(i);
-        x[(i * G.n) + i] = model.addVar(0.0, 0.0, 0.0, GRB_CONTINUOUS, varName);
-    }
-    model.set(GRB_DoubleParam_TimeLimit, 7200);
-    model.set(GRB_IntParam_OutputFlag, 0);
-    model.set(GRB_IntAttr_ModelSense, 1);
-    model.update();
+    std::vector<GRBVar> x (G.n * G.n);
+    std::vector<GRBVar> y (2 * G.m);
+    
+    variable_setup(G, model, x, y);
 
     // -------- Constraints ---------
-
+    int j;
     for (int i = 0; i < G.n; i++)
     {
         for (int k = G.EdgesBegin[i]; k < G.EdgesBegin[i] + G.Degree[i]; k++)
         {
             j = G.EdgeTo[k];
-            if (i < j)
-            {
-                model.addConstr(x[(i * G.n) + j]>= 1 - y[k]);
+            if (i < j) 
+            { 
+                y[k].set(GRB_CharAttr_VType, GRB_BINARY);
+                model.addConstr(x[(i * G.n) + j], GRB_GREATER_EQUAL, 1 - y[k]); 
             }
         }
     }
@@ -300,6 +298,8 @@ void path(Graph &G, int p, float r_pct, const char* cut_type)
         }
         model.addConstr(expr, GRB_LESS_EQUAL, G.r - G.Weight[i]);
     }
+
+
 
     // -------- Callback --------
 
@@ -337,47 +337,26 @@ void path(Graph &G, int p, float r_pct, const char* cut_type)
     //std::cout << cb.lp_tree_cuts << " ";
     // End line
     std::cout << std::endl;
-
-    
-    // -------- Memory Dellocation ---------
-
-    delete[] x;
-    delete[] y;
-    delete env;
 }
 
 void tree_cover_ip(Graph &G, const char* cut_type)
 {
     // --------- Initialize Model and Environment ---------
         std::chrono::high_resolution_clock::time_point t0 = std::chrono::high_resolution_clock::now();
-        GRBEnv *env = new GRBEnv();
-        GRBModel model = GRBModel(*env);
+        GRBEnv env = GRBEnv();
+        GRBModel model = GRBModel(env);
 
-        GRBVar *y = new GRBVar[2 * G.m];
-        GRBVar *x = new GRBVar[G.n * G.n];
+        std::vector<GRBVar> x (G.n * G.n);
+        std::vector<GRBVar> y (2 * G.m);
+
+        variable_setup(G, model, x, y);
+
+        model.set(GRB_IntParam_LazyConstraints, 1);
+
         int userCuts = 0;
-        
-
-        for (int i = 0; i < G.n; i++){
-            for (int k = G.EdgesBegin[i]; k < G.EdgesBegin[i] + G.Degree[i]; k++){
-                int j = G.EdgeTo[k];
-                if (i < j){
-                    y[k] = model.addVar(0.0, 1.0, G.EdgeCost[k], GRB_BINARY);
-                    for (int l = G.EdgesBegin[j]; l < G.EdgesBegin[j] + G.Degree[j]; l++){
-                        if (i == G.EdgeTo[l]){ y[l] = y[k]; }
-                    }
-                }
-            }
-        }
-        
+        for(int m = 0; m < 2 * G.m; m++) { y[m].set(GRB_CharAttr_VType, GRB_BINARY); }
         for(int i = 0; i < G.n * G.n; i++) {x[i] = model.addVar(0.0, 0.0, 0.0, GRB_CONTINUOUS);}
 
-        model.set(GRB_DoubleParam_TimeLimit, 7200);
-        model.set(GRB_IntAttr_ModelSense, 1);
-        model.set(GRB_IntParam_OutputFlag, 0);
-        model.set(GRB_IntParam_LazyConstraints, 1);
-        model.update();
-        
         TreeSeparation cb = TreeSeparation(env, y, x, G, 100, 1.00, cut_type);
         
         model.setCallback(&cb);
@@ -400,48 +379,29 @@ void tree_cover_ip(Graph &G, const char* cut_type)
         std::cout << std::endl;
 }
 
-
 void tree_cover_formulation(Graph &G)
 {
     try {
         // --------- Initialize Model and Environment ---------
         std::chrono::high_resolution_clock::time_point t0 = std::chrono::high_resolution_clock::now();
-        GRBEnv *env = new GRBEnv();
-        GRBModel model = GRBModel(*env);
+        GRBEnv env = GRBEnv();
+        GRBModel model = GRBModel(env);
 
-        GRBVar *y = new GRBVar[2 * G.m];
-        int userCuts = 0;
+        std::vector<GRBVar> x (G.n * G.n);
+        std::vector<GRBVar> y (2 * G.m);
+
+        variable_setup(G, model, x, y);
         
+        for(int i = 0; i < G.n * G.n; i++) {x[i] = model.addVar(0.0, 0.0, 0.0, GRB_CONTINUOUS);}
+        int userCuts = 0;
 
-        for (int i = 0; i < G.n; i++){
-            for (int k = G.EdgesBegin[i]; k < G.EdgesBegin[i] + G.Degree[i]; k++){
-                int j = G.EdgeTo[k];
-                if (i < j){
-                    y[k] = model.addVar(0.0, 1.0, G.EdgeCost[k], GRB_CONTINUOUS);
-                    for (int l = G.EdgesBegin[j]; l < G.EdgesBegin[j] + G.Degree[j]; l++){
-                        if (i == G.EdgeTo[l]){ y[l] = y[k]; }
-                    }
-                }
-            }
-        }
-
-        model.set(GRB_DoubleParam_TimeLimit, 7200);
-        model.set(GRB_IntAttr_ModelSense, 1);
-        model.set(GRB_IntParam_OutputFlag, 1);
-        model.set(GRB_IntParam_OutputFlag, 0);
-        //model.set(GRB_IntParam_PreCrush, 1);
-        model.update();
-        /*
-        TreeSeparation cb = TreeSeparation(env, y, x, G, G.r, 0);
-        cb.is_tcf = true;
-        model.setCallback(&cb);
-        */
         model.optimize();
-        std::chrono::high_resolution_clock::time_point t1 = std::chrono::high_resolution_clock::now();
-        GRBModel MST_model = GRBModel(*env);
 
-        GRBVar *z = new GRBVar[G.n * (G.n + 1)];
-        GRBVar *f = new GRBVar[G.n * (G.n + 1)];
+        std::chrono::high_resolution_clock::time_point t1 = std::chrono::high_resolution_clock::now();
+        GRBModel MST_model = GRBModel(env);
+
+        std::vector<GRBVar> z(G.n * (G.n + 1));
+        std::vector<GRBVar> f(G.n * (G.n + 1));
 
         for (int i = 0; i < G.n; i++){
             for(int j = 0; j < G.n + 1; j++)
@@ -470,7 +430,7 @@ void tree_cover_formulation(Graph &G)
         }
 
         MST_model.set(GRB_IntAttr_ModelSense, 1);
-        MST_model.set(GRB_IntParam_OutputFlag, 0);
+        MST_model.set(GRB_IntParam_OutputFlag, 1);
         MST_model.update();
 
         for (int i = 0; i < G.n; i++){
@@ -480,7 +440,7 @@ void tree_cover_formulation(Graph &G)
         }
 
 
-        GRBConstr* flow_constraint = new GRBConstr[G.n];
+        std::vector<GRBConstr> flow_constraint(G.n);
         GRBLinExpr expr;
         for(int i = 0; i < G.n; i++){
             expr = 0;
@@ -524,14 +484,12 @@ void tree_cover_formulation(Graph &G)
                 f[(i * (G.n + 1)) + G.n].set(GRB_DoubleAttr_UB, G.r);
                 z[(i * (G.n + 1)) + G.n].set(GRB_DoubleAttr_Obj, 2.0 * G.n);
                 flow_constraint[i].set(GRB_DoubleAttr_RHS, G.r);
-
+                
                 MST_model.update();
                 MST_model.optimize();
                 tree_cut = 0;
                 if(MST_model.get(GRB_DoubleAttr_ObjVal) < 1 - 1e-5) {
                     violated = true;
-                    //std::cout << "Tree at root " << i << " objective: " << MST_model.get(GRB_DoubleAttr_ObjVal) << std::endl;
-                    //std::cout << "Edges: ";
                     for(int j = 0; j < G.n; j++) {
                         for(int k = G.EdgesBegin[j]; k < G.EdgesBegin[j] + G.Degree[j]; k++) {
                             int l = G.EdgeTo[k];
@@ -541,14 +499,13 @@ void tree_cover_formulation(Graph &G)
                             }
                         }
                     }
-                    //std::cout << std::endl;
                     model.addConstr(tree_cut, GRB_GREATER_EQUAL, 1.0);
                     userCuts++;
                 }
 
-                f[(i * (G.n + 1)) + G.n].set(GRB_DoubleAttr_UB, 1);
-                z[(i * (G.n + 1)) + G.n].set(GRB_DoubleAttr_Obj, 0);
-                flow_constraint[i].set(GRB_DoubleAttr_RHS, 0);
+                f[(i * (G.n + 1)) + G.n].set(GRB_DoubleAttr_UB, 1.0);
+                z[(i * (G.n + 1)) + G.n].set(GRB_DoubleAttr_Obj, 0.0);
+                flow_constraint[i].set(GRB_DoubleAttr_RHS, 0.0);
             }
         }
         
@@ -595,33 +552,20 @@ void compute_tree_weight(const std::vector< std::vector<int> > &tree_adj,
 }
 
 
-
-
 void dynamic_program_lp(Graph &G)
 {
     std::chrono::high_resolution_clock::time_point t0 = std::chrono::high_resolution_clock::now();
-    GRBEnv *env = new GRBEnv();
-    GRBModel model = GRBModel(*env);
+    GRBEnv env = GRBEnv();
+    GRBModel model = GRBModel(env);
 
-    GRBVar *y = new GRBVar[2 * G.m];
+    std::vector<GRBVar> x (G.n * G.n);
+    std::vector<GRBVar> y (2 * G.m);
+
+    variable_setup(G, model, x, y);
+
     int userCuts = 0;
-    for (int i = 0; i < G.n; i++){
-        for (int k = G.EdgesBegin[i]; k < G.EdgesBegin[i] + G.Degree[i]; k++){
-            int j = G.EdgeTo[k];
-            if (i < j){
-                y[k] = model.addVar(0.0, 1.0, G.EdgeCost[k], GRB_CONTINUOUS);
-                for (int l = G.EdgesBegin[j]; l < G.EdgesBegin[j] + G.Degree[j]; l++){
-                    if (i == G.EdgeTo[l]){ y[l] = y[k]; }
-                }
-            }
-        }
-    }
-
-    model.set(GRB_DoubleParam_TimeLimit, 7200);
-    model.set(GRB_IntAttr_ModelSense, 1);
-    model.set(GRB_IntParam_OutputFlag, 1);
-    model.set(GRB_IntParam_OutputFlag, 0);
-    //model.set(GRB_IntParam_PreCrush, 1);
+    for(int i = 0; i < G.n * G.n; i++) {x[i] = model.addVar(0.0, 0.0, 0.0, GRB_CONTINUOUS);}
+    
     model.update();
 
     std::vector<std::vector<int>> tree_adj(G.n, std::vector<int>());
@@ -659,22 +603,19 @@ void dynamic_program_lp(Graph &G)
     int total_weight = 0;
     compute_tree_weight(tree_adj, G.Weight, discovered, discover_weight, subtree_weight, total_weight, 0);
 
-
-
-    GRBModel tree_dp = GRBModel(*env);
+    GRBModel tree_dp = GRBModel(env);
     
-
     GRBVar zvar = tree_dp.addVar(0.0, GRB_INFINITY, 1.0, GRB_CONTINUOUS, "z");
-    std::vector<GRBVar> hvar;
-    std::vector< std::vector<GRBVar> > fvar(G.n, std::vector<GRBVar>());
-    std::vector<  std::vector<GRBVar> > gvar(prefix_num_children.back(), std::vector<GRBVar>());
-    std::vector<int> edge_indices;
+    std::vector<GRBVar> hvar(prefix_num_children.back());
+    std::vector< std::vector<GRBVar> > fvar(G.n, std::vector<GRBVar>(G.r + 1));
+    std::vector<  std::vector<GRBVar> > gvar(prefix_num_children.back(), std::vector<GRBVar>(G.r + 1));
+    std::vector<int> edge_indices(prefix_num_children.back());
     int e = 0;
     for(int i = 0; i < G.n; i++)
     {
         for(int o = 0; o < G.r + 1; ++o)
         {
-            fvar[i].push_back(tree_dp.addVar(0.0, GRB_INFINITY, 0.0, GRB_CONTINUOUS));
+            fvar[i][o] = tree_dp.addVar(0.0, GRB_INFINITY, 0.0, GRB_CONTINUOUS);
             if(o < G.Weight[i] || o > subtree_weight[i]) { fvar[i][o].set(GRB_DoubleAttr_LB, 2 * subtree_weight[0]); }
         }
         if(num_children[i] == 0) { fvar[i][G.Weight[i]].set(GRB_DoubleAttr_UB, 0.0); }
@@ -684,9 +625,9 @@ void dynamic_program_lp(Graph &G)
             {
                 if(G.EdgeTo[k] == tree_adj[i][j])
                 {
-                    hvar.push_back(tree_dp.addVar(0.0, GRB_INFINITY, 0.0, GRB_CONTINUOUS));
-                    edge_indices.push_back(k);
-                    for(int o = 0; o < G.r + 1; ++o) {gvar[e].push_back(tree_dp.addVar(0.0, GRB_INFINITY, 0.0, GRB_CONTINUOUS));}
+                    edge_indices[e] = k;
+                    hvar[e] = tree_dp.addVar(0.0, GRB_INFINITY, 0.0, GRB_CONTINUOUS);
+                    for(int o = 0; o < G.r + 1; ++o) {gvar[e][o] = tree_dp.addVar(0.0, GRB_INFINITY, 0.0, GRB_CONTINUOUS);}
                     e++;
                     break;
                 }
@@ -786,28 +727,17 @@ void tree_lp(Graph &G)
 {
     std::chrono::high_resolution_clock::time_point t0 = std::chrono::high_resolution_clock::now();
     try{
-        GRBEnv *env = new GRBEnv();
-        GRBModel model = GRBModel(*env);
+        GRBEnv env = GRBEnv();
+        GRBModel model = GRBModel(env);
 
-        GRBVar *y = new GRBVar[2 * G.m];
+        std::vector<GRBVar> x (G.n * G.n);
+        std::vector<GRBVar> y (2 * G.m);
+
+        variable_setup(G, model, x, y);
+
         int userCuts = 0;
-        std::cout << "y variables" << std::endl;
-        for (int i = 0; i < G.n; i++){
-            for (int k = G.EdgesBegin[i]; k < G.EdgesBegin[i] + G.Degree[i]; k++){
-                int j = G.EdgeTo[k];
-                if (i < j){
-                    y[k] = model.addVar(0.0, 1.0, G.EdgeCost[k], GRB_CONTINUOUS);
-                    for (int l = G.EdgesBegin[j]; l < G.EdgesBegin[j] + G.Degree[j]; l++){
-                        if (i == G.EdgeTo[l]){ y[l] = y[k]; }
-                    }
-                }
-            }
-        }
-
-        model.set(GRB_DoubleParam_TimeLimit, 7200);
-        model.set(GRB_IntAttr_ModelSense, 1);
-        model.set(GRB_IntParam_OutputFlag, 1);
-        model.set(GRB_IntParam_OutputFlag, 0);
+        for(int i = 0; i < G.n * G.n; i++) {x[i] = model.addVar(0.0, 0.0, 0.0, GRB_CONTINUOUS);}
+        
         model.update();
 
         std::cout << "getting rooted out tree" << std::endl;
@@ -848,10 +778,10 @@ void tree_lp(Graph &G)
         compute_tree_weight(tree_adj, G.Weight, discovered, discover_weight, subtree_weight, total_weight, 0);
 
         std::vector<GRBVar> alpha(G.r + 1);
-        std::vector<std::vector<GRBVar> > beta(G.n, std::vector<GRBVar>());
-        std::vector< std::vector< std::vector<GRBVar> > > gamma(G.n - 1);
-        std::vector< std::vector< std::vector<GRBVar> > > rho(G.n - 1);
-        std::vector<int> edge_number;
+        std::vector<std::vector<GRBVar> > beta(G.n, std::vector<GRBVar>(G.r + 1));
+        std::vector< std::vector< std::vector<GRBVar> > > gamma(G.n - 1, std::vector< std::vector<GRBVar> >(G.r + 1));
+        std::vector< std::vector< std::vector<GRBVar> > > rho(G.n - 1, std::vector< std::vector<GRBVar> >(G.r + 1));
+        std::vector<int> edge_number(prefix_num_children.back());
         std::string vname;
         std::cout << "Creating variables: alpha" << std::endl;
         for(int o = 1; o < G.r + 1; o++)
@@ -864,7 +794,7 @@ void tree_lp(Graph &G)
             for(int o = 0; o < G.r + 1; o++)
             {
                 vname = "beta_" + std::to_string(i) + "," + std::to_string(o);
-                beta[i].push_back(model.addVar(-GRB_INFINITY, GRB_INFINITY, 0.0, GRB_CONTINUOUS, vname));
+                beta[i][o] = model.addVar(-GRB_INFINITY, GRB_INFINITY, 0.0, GRB_CONTINUOUS, vname);
             }
         }
         std::cout << "Creating variables: gamma & rho" << std::endl;
@@ -875,23 +805,21 @@ void tree_lp(Graph &G)
             {
                 for(int k = G.EdgesBegin[i]; k < G.EdgesBegin[i] + G.Degree[i]; k++)
                 {
-                    if(G.EdgeTo[k] == tree_adj[i][j]){ edge_number.push_back(k);}
+                    if(G.EdgeTo[k] == tree_adj[i][j]){ edge_number[e] = k;}
                 }
-                gamma[e] = std::vector<std::vector<GRBVar> >(G.r + 1);
-                rho[e] = std::vector<std::vector<GRBVar> >(G.r + 1);
                 
                 for(int o = 0; o < G.r + 1; o++){
-                    gamma[e][o] = std::vector<GRBVar>();
-                    rho[e][o] = std::vector<GRBVar>();
+                    gamma[e][o] = std::vector<GRBVar>(G.r + 1);
+                    rho[e][o] = std::vector<GRBVar>(o);
                     for(int k = 0; k < G.r + 1; k++)
                     {
                         vname = "gamma_" + std::to_string(e) + "," + std::to_string(o) + "," + std::to_string(k);
-                        gamma[e][o].push_back(model.addVar(0.0, GRB_INFINITY, 0.0, GRB_CONTINUOUS, vname));
+                        gamma[e][o][k] = model.addVar(0.0, GRB_INFINITY, 0.0, GRB_CONTINUOUS, vname);
                     }
                     for(int k = 0; k < o; k++)
                     {
                         vname = "rho_" + std::to_string(e) + "," + std::to_string(o) + "," + std::to_string(k);
-                        rho[e][o].push_back(model.addVar(0.0, GRB_INFINITY, 0.0, GRB_CONTINUOUS, vname));
+                        rho[e][o][k] = model.addVar(0.0, GRB_INFINITY, 0.0, GRB_CONTINUOUS, vname);
                     }
                 }
                 e++;
@@ -992,56 +920,22 @@ void tree_lp(Graph &G)
     }
 }
 
-
 void flow_relax(Graph &G, int p, float rpct)
 {
     try
     {
         std::chrono::high_resolution_clock::time_point t0 = std::chrono::high_resolution_clock::now();
-        GRBEnv *env = new GRBEnv();
-        GRBModel model = GRBModel(*env);
+        GRBEnv env = GRBEnv();
+        GRBModel model = GRBModel(env);
 
-        GRBVar *x = model.addVars(G.n * G.n, GRB_CONTINUOUS);
-        GRBVar *y = model.addVars(2 * G.m, GRB_CONTINUOUS);
-        std::cout << "xvars.." << std::endl;
-        for(int i = 0; i < G.n; ++i)
-        {
-            for(int j = 0; j < G.n; ++j)
-            {
-                if(i == j)
-                {
-                    x[(i * G.n) + j].set(GRB_DoubleAttr_UB, 0.0);
-                }
-                if(i < j)
-                {
-                    x[(j * G.n) + i] = x[(i * G.n) + j];
-                }
-            }
-        }
-        std::cout << "yvars.." << std::endl;
-        for(int m = 0; m < 2 * G.m; ++m)
-        {
-            y[m].set(GRB_DoubleAttr_UB, 1.0);
-            y[m].set(GRB_DoubleAttr_Obj, G.EdgeCost[m]); // TODO: Make it work for general costs~[1, 1000]
-            
-        }
+        std::vector<GRBVar> x (G.n * G.n);
+        std::vector<GRBVar> y (2 * G.m);
+        
+        std::cout << "setting up vars.." << std::endl;
 
-        for (int i = 0; i < G.n; i++){
-            for (int k = G.EdgesBegin[i]; k < G.EdgesBegin[i] + G.Degree[i]; k++){
-                int j = G.EdgeTo[k];
-                if (i < j){
-                    for (int l = G.EdgesBegin[j]; l < G.EdgesBegin[j] + G.Degree[j]; l++){
-                        if (i == G.EdgeTo[l]){ y[l] = y[k]; }
-                    }
-                }
-            }
-        }
+        variable_setup(G, model, x, y);
 
-        model.set(GRB_IntAttr_ModelSense, 1);
-        model.set(GRB_IntParam_OutputFlag, 0);
-        model.set(GRB_DoubleParam_TimeLimit, 7200);
-        model.update();
-        std::cout << "constr1.." << std::endl;
+
         for(int i = 0; i < G.n; ++i)
         {
             for(int k = G.EdgesBegin[i]; k < G.EdgesBegin[i] + G.Degree[i]; ++k)
@@ -1049,16 +943,12 @@ void flow_relax(Graph &G, int p, float rpct)
                 int j = G.EdgeTo[k];
                 if(i < j)
                 {
-                    x[(i * G.n) + j].set(GRB_DoubleAttr_UB, 1.0);
-                    x[(j * G.n) + i].set(GRB_DoubleAttr_UB, 1.0);
-                    x[(i * G.n) + j].set(GRB_CharAttr_VType, GRB_CONTINUOUS);
-                    x[(j * G.n) + i].set(GRB_CharAttr_VType, GRB_CONTINUOUS);
                     model.addConstr(y[k], GRB_EQUAL, 1 - x[(i * G.n) + j]);
                     model.addConstr(y[k], GRB_EQUAL, 1 - x[(j * G.n) + i]);
                 }
             }
-        }
-        std::cout << "constr2.." << std::endl;
+        } // Link x,y variables
+        
         for(int i = 0; i < G.n; ++i){
             for(int q = G.EdgesBegin[i]; q < G.EdgesBegin[i] + G.Degree[i]; q++){
                 int j = G.EdgeTo[q];
@@ -1082,6 +972,14 @@ void flow_relax(Graph &G, int p, float rpct)
                 constr += G.Weight[j] * x[(i * G.n) + j];
             }
             model.addConstr(constr, GRB_LESS_EQUAL, G.r - G.Weight[i]);
+        } // Knapsack Constraints
+
+        constr = 0;
+        for(int i = 0; i < G.n; ++i)
+        {
+            constr = 0;
+            for(int j = 0; j < G.n; ++j) { constr += G.Weight[j] * x[(i * G.n) + j]; }
+            model.addConstr(constr, GRB_LESS_EQUAL, G.r - G.Weight[i]);
         }
 
         
@@ -1094,16 +992,16 @@ void flow_relax(Graph &G, int p, float rpct)
         double tree_weight;
         int node_weight;
         int tree_limit = G.r * rpct;
-        int *parent = new int[G.n];
-        double *cost = new double[G.n];
+        std::vector<int> parent(G.n, -1);
+        std::vector<double> cost(G.n, INT_MAX);
         std::vector< std::vector<int> > tree_adj(G.n, std::vector<int>());
         std::vector<int> tree_degree(G.n, 0);
         std::vector<int> prefix_children(G.n, 0);
         double current_time = 0;
-	while(violated_cut && p > 0 && current_time <= 7200.00)
+	    while(violated_cut && p > 0 && current_time <= 7200.00)
         {
             violated_cut = false;
-            GRBModel tree_dp = GRBModel(*env);
+            GRBModel tree_dp = GRBModel(env);
             std::vector<GRBVar> hvar;
             std::vector< std::vector<GRBVar> > fvar;
             std::vector<  std::vector<GRBVar> > gvar;
@@ -1116,7 +1014,7 @@ void flow_relax(Graph &G, int p, float rpct)
                 tree_weight = 0.0;
                 tree_nodes.clear();
                 for(int m = 0; m < 2 * G.m; m++) {cost_to[m] = y[m].get(GRB_DoubleAttr_X);}
-                tree_nodes = G.Prim(cost_to, root, tree_limit, parent, cost);
+                G.Prim(cost_to, root, tree_limit, parent, cost, tree_nodes);
                 std::fill(tree_degree.begin(), tree_degree.end(), 0);
                 std::fill(tree_adj.begin(), tree_adj.end(), std::vector<int>());
                 for(int i : tree_nodes)
@@ -1134,11 +1032,12 @@ void flow_relax(Graph &G, int p, float rpct)
                 compute_tree_weight(tree_adj, G.Weight, discovered, discover_weight, subtree_weight, total_weight, root);
 
                 //std::partial_sum(std::begin(tree_degree), std::end(tree_degree), std::begin(prefix_children));
-                fvar = std::vector< std::vector<GRBVar> >(G.n, std::vector<GRBVar>());
-                gvar = std::vector< std::vector<GRBVar> >(tree_nodes.size() - 1, std::vector<GRBVar>());
+                fvar = std::vector< std::vector<GRBVar> >(G.n, std::vector<GRBVar>(G.r + 1));
+                gvar = std::vector< std::vector<GRBVar> >(tree_nodes.size() - 1, std::vector<GRBVar>(G.r + 1));
+                hvar = std::vector<GRBVar>(tree_nodes.size() - 1);
                 std::vector<int> edge_begin(G.n, -1);
-                std::vector<int> edge_costs;
-                std::vector<int> edge_index;
+                std::vector<int> edge_costs(tree_nodes.size() - 1);
+                std::vector<int> edge_index(tree_nodes.size() - 1);
                 int e = 0;
                 GRBVar zvar = tree_dp.addVar(0.0, GRB_INFINITY, 1.0, GRB_CONTINUOUS);
                 for(int i : tree_nodes)
@@ -1147,7 +1046,7 @@ void flow_relax(Graph &G, int p, float rpct)
                     {
                         std::string fname = "f_" + std::to_string(i) + ","  + std::to_string(o);
                         
-                        fvar[i].push_back(tree_dp.addVar(0.0, GRB_INFINITY, 0.0, GRB_CONTINUOUS, fname));
+                        fvar[i][o] = tree_dp.addVar(0.0, GRB_INFINITY, 0.0, GRB_CONTINUOUS, fname);
                         
                         if(o < G.Weight[i] || o > subtree_weight[i]) { fvar[i][o].set(GRB_DoubleAttr_LB, 2 * subtree_weight[root]); }
                         
@@ -1161,12 +1060,12 @@ void flow_relax(Graph &G, int p, float rpct)
                         for(int k = G.EdgesBegin[i]; k < G.EdgesBegin[i] + G.Degree[i]; k++)
                         {
                             if(G.EdgeTo[k] == tree_adj[i][j]){
-                                hvar.push_back(tree_dp.addVar(0.0, GRB_INFINITY, -cost_to[k], GRB_CONTINUOUS));
-                                edge_costs.push_back(cost_to[k]);
-                                edge_index.push_back(k);
+                                hvar[e] = tree_dp.addVar(0.0, GRB_INFINITY, -cost_to[k], GRB_CONTINUOUS);
+                                edge_costs[e] = cost_to[k];
+                                edge_index[e] = k;
                                 for(int o = 0; o < G.r + 1; o++)
                                 {
-                                    gvar[e].push_back(tree_dp.addVar(0.0, GRB_INFINITY, 0.0, GRB_CONTINUOUS));
+                                    gvar[e][o] = tree_dp.addVar(0.0, GRB_INFINITY, 0.0, GRB_CONTINUOUS);
                                 }
                                 e++;
                                 break;
@@ -1261,9 +1160,9 @@ void flow_relax(Graph &G, int p, float rpct)
                 fvar.clear();
                 gvar.clear();
                 hvar.clear();
-        	std::chrono::high_resolution_clock::time_point t1 = std::chrono::high_resolution_clock::now();
-        	std::chrono::duration<double> time_span = std::chrono::duration_cast< std::chrono::duration<double> >(t1 - t0);
-		current_time = time_span.count();
+                std::chrono::high_resolution_clock::time_point t1 = std::chrono::high_resolution_clock::now();
+                std::chrono::duration<double> time_span = std::chrono::duration_cast< std::chrono::duration<double> >(t1 - t0);
+                current_time = time_span.count();
             } // end while
         }
         if (p == 0) {model.optimize();}

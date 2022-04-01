@@ -162,15 +162,13 @@ Graph::Graph(
 }
 
 void Graph::SP(
-	std::vector<double> CostTo,
+	const std::vector<double> &CostTo,
 	int s,
-	int *parent,
-	double *cost)
+	std::vector<int> &parent,
+    std::vector<double> &cost)
 {
-	for (int i = 0; i < n; i++) {
-		parent[i] = -1;
-		cost[i] = INT_MAX;
-	}
+	std::fill(parent.begin(), parent.end(), -1);
+    std::fill(cost.begin(), cost.end(), INT_MAX);
 	MinHeap Q(n);
 	for (int i = 0; i < n; i++) {
 		Q.array[i] = MinHeapNode(i, cost[i]);
@@ -197,17 +195,16 @@ void Graph::SP(
 	}
 }
 
-std::vector<int> Graph::Prim(
-	std::vector<double> CostTo,
+void Graph::Prim(
+	const std::vector<double> &CostTo,
 	int s,
 	int r,
-	int *parent,
-	double *cost)
+	std::vector<int> &parent,
+    std::vector<double> &cost,
+	std::vector<int> &treeNodes)
 {
-	for (int i = 0; i < n; i++) {
-		parent[i] = -1;
-		cost[i] = INT_MAX;
-	}
+	std::fill(parent.begin(), parent.end(), -1);
+    std::fill(cost.begin(), cost.end(), INT_MAX);
 	MinHeap Q(n);
 	for (int i = 0; i < n; i++) {
 		Q.array[i] = MinHeapNode(i, cost[i]);
@@ -222,7 +219,6 @@ std::vector<int> Graph::Prim(
 	Q.array[s] = Q.array[0];
 	Q.array[0] = temp;
 
-	std::vector<int> treeNodes;
 	int weight = 0;
 
 	std::vector<bool> in_tree(n, false);
@@ -242,9 +238,7 @@ std::vector<int> Graph::Prim(
 				Q.decreaseKey(EdgeTo[j], temp);
 			}
 		}		
-	}
-	
-	return treeNodes; 
+	} 
 }
 
 void Graph::print()

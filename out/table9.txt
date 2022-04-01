@@ -1,7 +1,4 @@
--TRI graph_name n m r best_obj mip_gap runtime b&b nodes
--FLOW graph_name n m r best_obj mip_gap runtime b&b_nodes cut_type prob_cut r_pct_trees_cut num_cuts separation_time
--PATH graph_name n m r best_obj mip_gap runtime b&b_nodes num_lazy num_user lazy_time user_time -tree_cut_type(not used)
--FLOW+ graph_name n m r best_obj mip_gap runtime b&b_nodes cut_type prob_cut r_pct_trees_cut num_cuts separation_time
+Instance Formulation Graph_type n m r best_obj mip_gap runtime b&b_nodes cut_type prob_cut r_pct_trees_cut num_cuts separation_time x x
 series-parallel-0.dat -TRI series-parallel 28 40 2613 5625 0 0.235074 1
 series-parallel-0.dat -FLOW series-parallel 28 40 2613 5625 0 0.0899019 1 -none 0 0 0 0
 series-parallel-0.dat -PATH series-parallel 28 40 2613 5625 0 0.0619988 23 190 441 0.000778712 0.0022075 -path 0 0

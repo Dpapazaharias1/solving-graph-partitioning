@@ -1,7 +1,4 @@
-Instance -TRI graph_name n m r best_obj mip_gap runtime b&b nodes
-Instance -FLOW graph_name n m r best_obj mip_gap runtime b&b_nodes cut_type prob_cut r_pct_trees_cut num_cuts separation_time
-Instance -PATH graph_name n m r best_obj mip_gap runtime b&b_nodes num_lazy num_user lazy_time user_time -tree_cut_type(not used)
-Instance -FLOW+ graph_name n m r best_obj mip_gap runtime b&b_nodes cut_type prob_cut r_pct_trees_cut num_cuts separation_time
+Instance Formulation Graph_type n m r best_obj mip_gap runtime b&b_nodes cut_type prob_cut r_pct_trees_cut num_cuts separation_time x x
 watts-strogatz-45.dat -TRI watts-strogatz 30 90 1484 26433 0 2.11656 1
 watts-strogatz-45.dat -FLOW watts-strogatz 30 90 1484 26433 0 0.99469 1 -none 0 0 0 0
 watts-strogatz-45.dat -PATH watts-strogatz 30 90 1484 26433 0 0.181691 128 173 887 0.00106595 0.00762992 -path 0 0

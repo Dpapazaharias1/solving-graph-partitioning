@@ -3,8 +3,9 @@
 #include <queue>
 #include <cstring>
 #include <numeric>
+#include <limits.h>
 
-void GPSeparation::prim_heuristic(std::vector<double> &cost_to, int* parent, double* cost)
+void GPSeparation::prim_heuristic(std::vector<double> &cost_to, std::vector<int> &parent, std::vector<double> &cost)
 {
     GRBLinExpr expr;
     std::vector<int> tree_nodes;
@@ -12,7 +13,7 @@ void GPSeparation::prim_heuristic(std::vector<double> &cost_to, int* parent, dou
     int s = rand() % n;
     double tree_weight = 0.0;
     int node_weight = 0;
-    tree_nodes = G->Prim(cost_to, s, r, parent, cost);
+    G->Prim(cost_to, s, r, parent, cost, tree_nodes);
     int j;
     expr = 0;
     for(int i : tree_nodes)
@@ -33,7 +34,7 @@ void GPSeparation::prim_heuristic(std::vector<double> &cost_to, int* parent, dou
 }
 
 
-void GPSeparation::knapsack_cuts(std::vector<double> &cost_to, int* parent, double* cost)
+void GPSeparation::knapsack_cuts(std::vector<double> &cost_to, std::vector<int> &parent, std::vector<double> &cost)
 {
     GRBLinExpr expr;
     std::vector<int> tree_nodes;
@@ -42,7 +43,7 @@ void GPSeparation::knapsack_cuts(std::vector<double> &cost_to, int* parent, doub
     double tree_weight = 0.0;
     int node_weight = 0;
     int tree_limit = r * r_pct;
-    tree_nodes = G->Prim(cost_to, s, tree_limit, parent, cost);
+    G->Prim(cost_to, s, tree_limit, parent, cost, tree_nodes);
 
     std::vector< std::vector<int> > tree_adj(n, std::vector<int>());
     std::vector<int> tree_degree(n, 0);
@@ -107,7 +108,7 @@ void GPSeparation::knapsack_cuts(std::vector<double> &cost_to, int* parent, doub
     }
 }
 
-void GPSeparation::tdp_separation(std::vector<double> &cost_to, int* parent, double* cost)
+void GPSeparation::tdp_separation(std::vector<double> &cost_to, std::vector<int> &parent, std::vector<double> &cost)
 {
     std::vector<int> tree_nodes;
     srand((unsigned) time(0));
@@ -115,7 +116,7 @@ void GPSeparation::tdp_separation(std::vector<double> &cost_to, int* parent, dou
     double tree_weight = 0.0;
     int node_weight = 0;
     int tree_limit = r * r_pct;
-    tree_nodes = G->Prim(cost_to, s, tree_limit, parent, cost);
+    G->Prim(cost_to, s, tree_limit, parent, cost, tree_nodes);
 
     std::vector< std::vector<int> > tree_adj(n, std::vector<int>());
     std::vector<int> tree_degree(n, 0);
@@ -131,12 +132,12 @@ void GPSeparation::tdp_separation(std::vector<double> &cost_to, int* parent, dou
 }
 
 void GPSeparation::tdp_lp_separation(int root, 
-                               const double *ybar, 
+                               const std::vector<double> &ybar, 
                                const std::vector< std::vector<int> > &tree_adj, 
                                const std::vector<int> &num_children, 
                                const std::vector<int> &tree_nodes)
 {
-    GRBModel model = GRBModel(*env);
+    GRBModel model = GRBModel(env);
 
     std::vector<int> prefix_num_children(n, 0);
     std::partial_sum(std::begin(num_children), std::end(num_children), std::begin(prefix_num_children));
@@ -434,18 +435,7 @@ void GPSeparation::block_decomposition(std::vector<int> &tree_edges, const std::
             }
         }
     }
-    /*
-    for(int idx = 0; idx < tree_edges.size(); idx++)
-    {
-        int j = G->EdgeTo[tree_edges[idx]];
-        int i;
-        for(int k : tree_nodes)
-        {
-            if (tree_edges[idx] >= G->EdgesBegin[k] && tree_edges[idx] < G->EdgesBegin[k] + G->Degree[k]) {i = k;}
-        }
-        std::cout << edge_coef[tree_edges[idx]] << " (" << i << ", " << j << "): " << tree_edges[idx] << std::endl;
-    }
-    */
+
     GRBLinExpr expr = 0;
     for(int e : tree_edges)
     {
@@ -464,7 +454,6 @@ void GPSeparation::connected_components(std::vector< std::vector<int>> &componen
     {
         if(!processed[i])
         {
-            //std::cout << i << " ";
             component_weight = 0;
             component.clear();
             find_components(processed, parent, component, component_weight, i);
@@ -474,7 +463,6 @@ void GPSeparation::connected_components(std::vector< std::vector<int>> &componen
             }
         }
     }
-    //std::cout << std::endl;
 }
 
 void GPSeparation::find_components(
@@ -520,8 +508,8 @@ void PathSeparation::callback()
 
                 int j;
                 GRBLinExpr expr;
-                int *parent = new int[n];
-                double *cost = new double[n];
+                std::vector<int> parent(n, -1);
+                std::vector<double> cost(n, INT_MAX);
 
                 for (int root = 0; root < n; root++) {
                     G->SP(cost_to, root, parent, cost);
@@ -549,19 +537,16 @@ void PathSeparation::callback()
                 srand(time(NULL));
                 int rand_int = rand() % 100;
 
-                if(strcmp(cut_type, "-prim") == 0 && p > rand_int) {
+                if(cut_code == 1 && p > rand_int) {
                     prim_heuristic(cost_to, parent, cost);
                 }
-                if(strcmp(cut_type, "-knap") == 0 && p > rand_int) {
+                if(cut_code == 2 && p > rand_int) {
                     knapsack_cuts(cost_to, parent, cost);
                 }
-                if(strcmp(cut_type, "-tdp") == 0 && p > rand_int) {
+                if(cut_code == 3 && p > rand_int) {
                     tdp_separation(cost_to, parent, cost);
                 }
 
-
-                delete[] cost;
-                delete[] parent;
                 std::chrono::high_resolution_clock::time_point t1 = std::chrono::high_resolution_clock::now();
                 std::chrono::duration<double> time_span = std::chrono::duration_cast< std::chrono::duration<double> >(t1 - t0);
                 user_time += time_span.count();
@@ -584,8 +569,9 @@ void PathSeparation::callback()
 
             int j;
             GRBLinExpr expr;
-            int *parent = new int[n];
-            double *cost = new double[n];
+            std::vector<int> parent(n, -1);
+            std::vector<double> cost(n, INT_MAX);
+            
 
             for (int root = 0; root < n; root++) {
                 G->SP(cost_to, root, parent, cost);
@@ -608,8 +594,7 @@ void PathSeparation::callback()
                     } // if cut is violated
                 }
             } // Shortest Path Separation
-            delete[] cost;
-            delete[] parent;
+
             std::chrono::high_resolution_clock::time_point t1 = std::chrono::high_resolution_clock::now();
             std::chrono::duration<double> time_span = std::chrono::duration_cast< std::chrono::duration<double> >(t1 - t0);
             lazy_time += time_span.count();
@@ -650,21 +635,19 @@ void TreeSeparation::callback()
                     if(ysol[e] < 0) { cost_to[e] = 0.0; }
                 }
 
-                int *parent = new int[n];
-                double *cost = new double[n];
+                std::vector<int> parent(n, -1);
+                std::vector<double> cost(n, INT_MAX);
 
-                if(strcmp(cut_type, "-prim") == 0 && p > rand_int) {
+                if(cut_code == 1 && p > rand_int) {
                     prim_heuristic(cost_to, parent, cost);
                 }
-                if(strcmp(cut_type, "-knap") == 0 && p > rand_int) {
+                if(cut_code == 2 && p > rand_int) {
                     knapsack_cuts(cost_to, parent, cost);
                 }
-                if(strcmp(cut_type, "-tdp") == 0 && p > rand_int) {
+                if(cut_code == 3 && p > rand_int) {
                     tdp_separation(cost_to, parent, cost);
                 }
 
-                delete[] cost;
-                delete[] parent;
                 std::chrono::high_resolution_clock::time_point t1 = std::chrono::high_resolution_clock::now();
                 std::chrono::duration<double> time_span = std::chrono::duration_cast< std::chrono::duration<double> >(t1 - t0);
                 user_time += time_span.count();
@@ -688,20 +671,18 @@ void TreeSeparation::callback()
                 for(std::vector<int> tree_edges : cover_trees)
                 {
                     expr = 0;
-                    for (int e : tree_edges) { expr += y[e];}
+                    for (int e : tree_edges) { 
+                        expr += y[e];
+                    }
                     addLazy(expr, GRB_GREATER_EQUAL, 1.0);
                     lazy_cuts++;
                 }
             }
 
             if(strcmp(cut_type, "-block") == 0) {
-                GRBLinExpr expr;
-                //std::cout << "Violating components " << cover_trees.size() << std::endl; 
+                GRBLinExpr expr; 
                 for(std::vector<int> tree_edges : cover_trees)
                 {
-                    //expr = 0;
-                    //for (int e : tree_edges) { expr += y[e];}
-                    //addLazy(expr, GRB_GREATER_EQUAL, 1.0);
                     block_decomposition(tree_edges, parent);
                     lazy_cuts++;
                 }

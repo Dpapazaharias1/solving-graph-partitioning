@@ -28,5 +28,6 @@ do
   done
 done
 
+python ./run/table-constructor.py 4 ./out/$table.txt ./out/$table.csv
 
 

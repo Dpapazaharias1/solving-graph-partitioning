@@ -1,7 +1,4 @@
--TRI graph_name n m r best_obj mip_gap runtime b&b nodes
--FLOW graph_name n m r best_obj mip_gap runtime b&b_nodes cut_type prob_cut r_pct_trees_cut num_cuts separation_time
--PATH graph_name n m r best_obj mip_gap runtime b&b_nodes num_lazy num_user lazy_time user_time -tree_cut_type(not used)
--FLOW+ graph_name n m r best_obj mip_gap runtime b&b_nodes cut_type prob_cut r_pct_trees_cut num_cuts separation_time
+Instance Formulation Graph_type n m r best_obj mip_gap runtime b&b_nodes cut_type prob_cut r_pct_trees_cut num_cuts separation_time x x
 real-0.dat -TRI karate 34 78 3 56 0 0.099647 1
 real-0.dat -FLOW karate 34 78 3 56 0 0.058841 1 -none 0 0 0 0
 real-0.dat -PATH karate 34 78 3 56 0 0.024014 1 152 38 0.00152516 0.000545126 -path 0 0
