@@ -2,6 +2,9 @@
 # Graph Partitioning
 =====================================
 
+[![DOI](https://zenodo.org/badge/331125269.svg)](https://zenodo.org/badge/latestdoi/331125269)
+
+
 This code implements the algorithms presented in the paper "Solving Graph Partitioning on Sparse Graphs: Cuts, Projections, and Extended Formulations" by Demetrios V. Papazaharias and Jose L. Walteros. The code, which is implemented in C++, includes a variety of formulations and cutting-plane subroutines applied to solve graph partitioning problems. The implementation uses the libraries of commercial solver Gurobi. 
 
 
