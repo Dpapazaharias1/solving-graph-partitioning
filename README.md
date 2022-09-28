@@ -1,5 +1,5 @@
 
-# Graph Partitioning
+# Solving Graph Partitioning on Sparse Graphs: Implementation
 =====================================
 
 [![DOI](https://zenodo.org/badge/331125269.svg)](https://zenodo.org/badge/latestdoi/331125269)
